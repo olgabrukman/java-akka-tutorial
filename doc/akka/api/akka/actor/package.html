@@ -1,0 +1,1796 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>actor - akka.actor</title>
+          <meta name="description" content="actor - akka.actor" />
+          <meta name="keywords" content="actor akka.actor" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../index.html';
+            var hash = 'akka.actor.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img src="../../lib/package_big.png" />
+        <p id="owner"><a href="../package.html" class="extype" name="akka">akka</a></p>
+        <h1>actor</h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">actor</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="http://github.com/akka/akka/tree/v2.3.15//akka-actor/src/main/scala/akka/actor/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></div>
+        </div><div class="toggleContainer block diagram-container" id="content-diagram-container">
+                <span class="toggle diagram-link">Content Hierarchy</span>
+                <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#diagrams" target="_blank" class="diagram-help">Learn more about scaladoc diagrams</a>
+                <div class="diagram" id="content-diagram"><svg class="package-diagram" id="graph768" viewBox="0.00 0.00 5264.50 216.00" height="216pt" width="5265pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 212)" class="graph" id="graph0"><polygon points="-4,4 -4,-212 5260.5,-212 5260.5,4 -4,4" stroke="none" fill="white"></polygon><!-- node0 --><g class="node trait" id="graph768_0"><g id="a_trait|graph768_0"><a xlink:title="akka.actor.ExtensionId" xlink:href="ExtensionId.html#inheritance-diagram"><polygon points="248.5,-208 141.5,-208 141.5,-183 248.5,-183 248.5,-208" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-202.5" x="152" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="173" text-anchor="start">ExtensionId[T]</text></a></g></g><!-- node3 --><g class="node class" id="graph768_3"><g id="a_class|graph768_3"><a xlink:title="akka.actor.AbstractExtensionId" xlink:href="AbstractExtensionId.html#inheritance-diagram"><polygon points="144,-147 0,-147 0,-122 144,-122 144,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="10" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="31" text-anchor="start">AbstractExtensionId[T]</text></a></g></g><!-- node0&#45;&gt;node3 --><g class="edge inheritance" id="graph768_0_3"><g id="a_inheritance|graph768_0_3"><a xlink:title="AbstractExtensionId[T] is a subtype of ExtensionId[T]"><path d="M166.31,-180.738C145.085,-170.557 116.488,-156.84 96.3674,-147.188" stroke="#d4d4d4" fill="none"></path><polygon points="165.727,-182.399 170.992,-182.984 167.241,-179.244 165.727,-182.399" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node6 --><g class="node class" id="graph768_6"><g id="a_class|graph768_6"><a xlink:title="akka.actor.ExtensionKey" xlink:href="ExtensionKey.html#inheritance-diagram"><polygon points="390.5,-147 273.5,-147 273.5,-122 390.5,-122 390.5,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="284" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="305" text-anchor="start">ExtensionKey[T]</text></a></g></g><!-- node0&#45;&gt;node6 --><g class="edge inheritance" id="graph768_0_6"><g id="a_inheritance|graph768_0_6"><a xlink:title="ExtensionKey[T] is a subtype of ExtensionId[T]"><path d="M226.361,-180.994C250.06,-170.788 282.26,-156.921 304.859,-147.188" stroke="#d4d4d4" fill="none"></path><polygon points="225.64,-179.399 221.74,-182.984 227.025,-182.614 225.64,-179.399" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node62 --><g class="node object" id="graph768_62"><g id="a_object|graph768_62"><a xlink:title="akka.actor.TypedActor" xlink:href="TypedActor$.html#inheritance-diagram"><polygon points="255.5,-147 162.5,-147 162.5,-122 255.5,-122 255.5,-147" stroke="#102966" fill="#3556a7"></polygon><image xlink:href="../../lib/object_diagram.png" y="-141.5" x="173" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="194" text-anchor="start">TypedActor</text></a></g></g><!-- node0&#45;&gt;node62 --><g class="edge inheritance" id="graph768_0_62"><g id="a_inheritance|graph768_0_62"><a xlink:title="TypedActor is a subtype of ExtensionId[T]"><path d="M198.925,-177.958C201.255,-168.141 204.151,-155.934 206.24,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="197.218,-177.575 197.766,-182.843 200.623,-178.383 197.218,-177.575" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node1 --><g class="node class" id="graph768_1"><g id="a_class|graph768_1"><a xlink:title="akka.actor.ReflectiveDynamicAccess" xlink:href="ReflectiveDynamicAccess.html#inheritance-diagram"><polygon points="565.5,-147 408.5,-147 408.5,-122 565.5,-122 565.5,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="419" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="440" text-anchor="start">ReflectiveDynamicAccess</text></a></g></g><!-- node2 --><g class="node class" id="graph768_2"><g id="a_class|graph768_2"><a xlink:title="akka.actor.ChildActorPath" xlink:href="ChildActorPath.html#inheritance-diagram"><polygon points="694,-147 584,-147 584,-122 694,-122 694,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="594" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="615" text-anchor="start">ChildActorPath</text></a></g></g><!-- node4 --><g class="node trait" id="graph768_4"><g id="a_trait|graph768_4"><a xlink:title="akka.actor.AllDeadLetters" xlink:href="AllDeadLetters.html#inheritance-diagram"><polygon points="1006,-208 898,-208 898,-183 1006,-183 1006,-208" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-202.5" x="908" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="929" text-anchor="start">AllDeadLetters</text></a></g></g><!-- node7 --><g class="node class" id="graph768_7"><g id="a_class|graph768_7"><a xlink:title="akka.actor.DeadLetter" xlink:href="DeadLetter.html#inheritance-diagram"><polygon points="930,-147 838,-147 838,-122 930,-122 930,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="848" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="869" text-anchor="start">DeadLetter</text></a></g></g><!-- node4&#45;&gt;node7 --><g class="edge inheritance" id="graph768_4_7"><g id="a_inheritance|graph768_4_7"><a xlink:title="DeadLetter is a subtype of AllDeadLetters"><path d="M934.777,-179.557C923.181,-169.495 908.11,-156.419 897.407,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="933.642,-180.889 938.565,-182.843 935.936,-178.245 933.642,-180.889" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node43 --><g class="node class" id="graph768_43"><g id="a_class|graph768_43"><a xlink:title="akka.actor.SuppressedDeadLetter" xlink:href="SuppressedDeadLetter.html#inheritance-diagram"><polygon points="1092,-147 948,-147 948,-122 1092,-122 1092,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="958" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="979" text-anchor="start">SuppressedDeadLetter</text></a></g></g><!-- node4&#45;&gt;node43 --><g class="edge inheritance" id="graph768_4_43"><g id="a_inheritance|graph768_4_43"><a xlink:title="SuppressedDeadLetter is a subtype of AllDeadLetters"><path d="M969.223,-179.557C980.819,-169.495 995.89,-156.419 1006.59,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="968.064,-178.245 965.435,-182.843 970.358,-180.889 968.064,-178.245" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node5 --><g class="node trait" id="graph768_5"><g id="a_trait|graph768_5"><a xlink:title="akka.actor.DiagnosticActorLogging" xlink:href="DiagnosticActorLogging.html#inheritance-diagram"><polygon points="1525.5,-147 1378.5,-147 1378.5,-122 1525.5,-122 1525.5,-147" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-141.5" x="1389" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="1410" text-anchor="start">DiagnosticActorLogging</text></a></g></g><!-- node8 --><g class="node class" id="graph768_8"><g id="a_class|graph768_8"><a xlink:title="akka.actor.ExtendedActorSystem" xlink:href="ExtendedActorSystem.html#inheritance-diagram"><polygon points="2738.5,-86 2595.5,-86 2595.5,-61 2738.5,-61 2738.5,-86" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-80.5" x="2606" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="2627" text-anchor="start">ExtendedActorSystem</text></a></g></g><!-- node9 --><g class="node trait" id="graph768_9"><g id="a_trait|graph768_9"><a xlink:title="akka.actor.AbstractActorContext" xlink:href="AbstractActorContext.html#inheritance-diagram"><polygon points="2421,-86 2283,-86 2283,-61 2421,-61 2421,-86" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-80.5" x="2293" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="2314" text-anchor="start">AbstractActorContext</text></a></g></g><!-- node10 --><g class="node trait" id="graph768_10"><g id="a_trait|graph768_10"><a xlink:title="akka.actor.ActorContext" xlink:href="ActorContext.html#inheritance-diagram"><polygon points="2559,-147 2457,-147 2457,-122 2559,-122 2559,-147" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-141.5" x="2467" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="2488" text-anchor="start">ActorContext</text></a></g></g><!-- node10&#45;&gt;node9 --><g class="edge inheritance" id="graph768_10_9"><g id="a_inheritance|graph768_10_9"><a xlink:title="AbstractActorContext is a subtype of ActorContext"><path d="M2472.61,-120.115C2445.5,-109.863 2408.49,-95.8634 2382.64,-86.0875" stroke="#d4d4d4" fill="none"></path><polygon points="2472.26,-121.852 2477.55,-121.984 2473.49,-118.578 2472.26,-121.852" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node37 --><g class="node trait" id="graph768_37"><g id="a_trait|graph768_37"><a xlink:title="akka.actor.UntypedActorContext" xlink:href="UntypedActorContext.html#inheritance-diagram"><polygon points="2577,-86 2439,-86 2439,-61 2577,-61 2577,-86" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-80.5" x="2449" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="2470" text-anchor="start">UntypedActorContext</text></a></g></g><!-- node10&#45;&gt;node37 --><g class="edge inheritance" id="graph768_10_37"><g id="a_inheritance|graph768_10_37"><a xlink:title="UntypedActorContext is a subtype of ActorContext"><path d="M2508,-116.687C2508,-106.917 2508,-94.8534 2508,-86.1323" stroke="#d4d4d4" fill="none"></path><polygon points="2506.25,-116.843 2508,-121.843 2509.75,-116.844 2506.25,-116.843" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node11 --><g class="node class" id="graph768_11"><g id="a_class|graph768_11"><a xlink:title="akka.actor.Terminated" xlink:href="Terminated.html#inheritance-diagram"><polygon points="3057,-147 2965,-147 2965,-122 3057,-122 3057,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="2975" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="2996" text-anchor="start">Terminated</text></a></g></g><!-- node12 --><g class="node object" id="graph768_12"><g id="a_object|graph768_12"><a xlink:title="akka.actor.Kill" xlink:href="Kill$.html#inheritance-diagram"><polygon points="2815,-86 2757,-86 2757,-61 2815,-61 2815,-86" stroke="#102966" fill="#3556a7"></polygon><image xlink:href="../../lib/object_diagram.png" y="-80.5" x="2767" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="2788" text-anchor="start">Kill</text></a></g></g><!-- node13 --><g class="node class" id="graph768_13"><g id="a_class|graph768_13"><a xlink:title="akka.actor.Kill" xlink:href="Kill.html#inheritance-diagram"><polygon points="2815,-147 2757,-147 2757,-122 2815,-122 2815,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="2767" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="2788" text-anchor="start">Kill</text></a></g></g><!-- node13&#45;&gt;node12 --><g class="edge inheritance" id="graph768_13_12"><g id="a_inheritance|graph768_13_12"><a xlink:title="Kill is a subtype of Kill"><path d="M2786,-116.687C2786,-106.917 2786,-94.8534 2786,-86.1323" stroke="#d4d4d4" fill="none"></path><polygon points="2784.25,-116.843 2786,-121.843 2787.75,-116.844 2784.25,-116.843" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node14 --><g class="node trait" id="graph768_14"><g id="a_trait|graph768_14"><a xlink:title="akka.actor.ExtensionIdProvider" xlink:href="ExtensionIdProvider.html#inheritance-diagram"><polygon points="397,-208 267,-208 267,-183 397,-183 397,-208" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-202.5" x="277" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="298" text-anchor="start">ExtensionIdProvider</text></a></g></g><!-- node14&#45;&gt;node6 --><g class="edge inheritance" id="graph768_14_6"><g id="a_inheritance|graph768_14_6"><a xlink:title="ExtensionKey[T] is a subtype of ExtensionIdProvider"><path d="M332,-177.687C332,-167.917 332,-155.853 332,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="330.25,-177.843 332,-182.843 333.75,-177.844 330.25,-177.843" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node14&#45;&gt;node62 --><g class="edge inheritance" id="graph768_14_62"><g id="a_inheritance|graph768_14_62"><a xlink:title="TypedActor is a subtype of ExtensionIdProvider"><path d="M303.31,-180.738C282.085,-170.557 253.488,-156.84 233.367,-147.188" stroke="#d4d4d4" fill="none"></path><polygon points="302.727,-182.399 307.992,-182.984 304.241,-179.244 302.727,-182.399" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node15 --><g class="node class" id="graph768_15"><g id="a_class|graph768_15"><a xlink:title="akka.actor.UntypedActor" xlink:href="UntypedActor.html#inheritance-diagram"><polygon points="1915,-147 1811,-147 1811,-122 1915,-122 1915,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="1821" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="1842" text-anchor="start">UntypedActor</text></a></g></g><!-- node38 --><g class="node class" id="graph768_38"><g id="a_class|graph768_38"><a xlink:title="akka.actor.UntypedActorWithStash" xlink:href="UntypedActorWithStash.html#inheritance-diagram"><polygon points="1950,-25 1800,-25 1800,-0 1950,-0 1950,-25" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-19.5" x="1810" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9.5" x="1831" text-anchor="start">UntypedActorWithStash</text></a></g></g><!-- node15&#45;&gt;node38 --><g class="edge inheritance" id="graph768_15_38"><g id="a_inheritance|graph768_15_38"><a xlink:title="UntypedActorWithStash is a subtype of UntypedActor"><path d="M1901.61,-119.724C1916.69,-112.225 1932.41,-101.283 1941,-86 1954.76,-61.5151 1923.36,-38.4748 1899.3,-25.1884" stroke="#d4d4d4" fill="none"></path><polygon points="1900.71,-118.212 1896.95,-121.943 1902.22,-121.371 1900.71,-118.212" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node47 --><g class="node class" id="graph768_47"><g id="a_class|graph768_47"><a xlink:title="akka.actor.UntypedActorWithUnboundedStash" xlink:href="UntypedActorWithUnboundedStash.html#inheritance-diagram"><polygon points="1706,-25 1508,-25 1508,-0 1706,-0 1706,-25" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-19.5" x="1518" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9.5" x="1539" text-anchor="start">UntypedActorWithUnboundedStash</text></a></g></g><!-- node15&#45;&gt;node47 --><g class="edge inheritance" id="graph768_15_47"><g id="a_inheritance|graph768_15_47"><a xlink:title="UntypedActorWithUnboundedStash is a subtype of UntypedActor"><path d="M1883.13,-118.667C1901.49,-103.361 1923.57,-79.2183 1908,-61 1894.79,-45.541 1788.88,-31.5175 1706.38,-22.7813" stroke="#d4d4d4" fill="none"></path><polygon points="1881.83,-117.472 1879.05,-121.981 1884.03,-120.19 1881.83,-117.472" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node49 --><g class="node class" id="graph768_49"><g id="a_class|graph768_49"><a xlink:title="akka.actor.UntypedActorWithUnrestrictedStash" xlink:href="UntypedActorWithUnrestrictedStash.html#inheritance-diagram"><polygon points="1899,-86 1697,-86 1697,-61 1899,-61 1899,-86" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-80.5" x="1707" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="1728" text-anchor="start">UntypedActorWithUnrestrictedStash</text></a></g></g><!-- node15&#45;&gt;node49 --><g class="edge inheritance" id="graph768_15_49"><g id="a_inheritance|graph768_15_49"><a xlink:title="UntypedActorWithUnrestrictedStash is a subtype of UntypedActor"><path d="M1846.25,-118.294C1835.2,-108.268 1820.96,-95.338 1810.82,-86.1323" stroke="#d4d4d4" fill="none"></path><polygon points="1845.28,-119.779 1850.16,-121.843 1847.63,-117.187 1845.28,-119.779" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node16 --><g class="node object" id="graph768_16"><g id="a_object|graph768_16"><a xlink:title="akka.actor.LocalScope" xlink:href="LocalScope$.html#inheritance-diagram"><polygon points="3277,-86 3181,-86 3181,-61 3277,-61 3277,-86" stroke="#102966" fill="#3556a7"></polygon><image xlink:href="../../lib/object_diagram.png" y="-80.5" x="3191" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="3212" text-anchor="start">LocalScope</text></a></g></g><!-- node17 --><g class="node class" id="graph768_17"><g id="a_class|graph768_17"><a xlink:title="akka.actor.LocalScope" xlink:href="LocalScope.html#inheritance-diagram"><polygon points="3277,-147 3181,-147 3181,-122 3277,-122 3277,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="3191" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="3212" text-anchor="start">LocalScope</text></a></g></g><!-- node17&#45;&gt;node16 --><g class="edge inheritance" id="graph768_17_16"><g id="a_inheritance|graph768_17_16"><a xlink:title="LocalScope is a subtype of LocalScope"><path d="M3229,-116.687C3229,-106.917 3229,-94.8534 3229,-86.1323" stroke="#d4d4d4" fill="none"></path><polygon points="3227.25,-116.843 3229,-121.843 3230.75,-116.844 3227.25,-116.843" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node18 --><g class="node object" id="graph768_18"><g id="a_object|graph768_18"><a xlink:title="akka.actor.ReceiveTimeout" xlink:href="ReceiveTimeout$.html#inheritance-diagram"><polygon points="2946.5,-86 2833.5,-86 2833.5,-61 2946.5,-61 2946.5,-86" stroke="#102966" fill="#3556a7"></polygon><image xlink:href="../../lib/object_diagram.png" y="-80.5" x="2844" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="2865" text-anchor="start">ReceiveTimeout</text></a></g></g><!-- node19 --><g class="node class" id="graph768_19"><g id="a_class|graph768_19"><a xlink:title="akka.actor.ReceiveTimeout" xlink:href="ReceiveTimeout.html#inheritance-diagram"><polygon points="2946.5,-147 2833.5,-147 2833.5,-122 2946.5,-122 2946.5,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="2844" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="2865" text-anchor="start">ReceiveTimeout</text></a></g></g><!-- node19&#45;&gt;node18 --><g class="edge inheritance" id="graph768_19_18"><g id="a_inheritance|graph768_19_18"><a xlink:title="ReceiveTimeout is a subtype of ReceiveTimeout"><path d="M2890,-116.687C2890,-106.917 2890,-94.8534 2890,-86.1323" stroke="#d4d4d4" fill="none"></path><polygon points="2888.25,-116.843 2890,-121.843 2891.75,-116.844 2888.25,-116.843" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node20 --><g class="node class" id="graph768_20"><g id="a_class|graph768_20"><a xlink:title="akka.actor.PreRestartException" xlink:href="PreRestartException.html#inheritance-diagram"><polygon points="3556.5,-147 3421.5,-147 3421.5,-122 3556.5,-122 3556.5,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="3432" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="3453" text-anchor="start">PreRestartException</text></a></g></g><!-- node21 --><g class="node class" id="graph768_21"><g id="a_class|graph768_21"><a xlink:title="akka.actor.AbstractActorWithStash" xlink:href="AbstractActorWithStash.html#inheritance-diagram"><polygon points="1461,-25 1311,-25 1311,-0 1461,-0 1461,-25" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-19.5" x="1321" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9.5" x="1342" text-anchor="start">AbstractActorWithStash</text></a></g></g><!-- node22 --><g class="node trait" id="graph768_22"><g id="a_trait|graph768_22"><a xlink:title="akka.actor.Extension" xlink:href="Extension.html#inheritance-diagram"><polygon points="3846,-208 3758,-208 3758,-183 3846,-183 3846,-208" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-202.5" x="3768" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="3789" text-anchor="start">Extension</text></a></g></g><!-- node41 --><g class="node class" id="graph768_41"><g id="a_class|graph768_41"><a xlink:title="akka.actor.TypedActorExtension" xlink:href="TypedActorExtension.html#inheritance-diagram"><polygon points="3870.5,-147 3733.5,-147 3733.5,-122 3870.5,-122 3870.5,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="3744" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="3765" text-anchor="start">TypedActorExtension</text></a></g></g><!-- node22&#45;&gt;node41 --><g class="edge inheritance" id="graph768_22_41"><g id="a_inheritance|graph768_22_41"><a xlink:title="TypedActorExtension is a subtype of Extension"><path d="M3802,-177.687C3802,-167.917 3802,-155.853 3802,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="3800.25,-177.843 3802,-182.843 3803.75,-177.844 3800.25,-177.843" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node23 --><g class="node trait" id="graph768_23"><g id="a_trait|graph768_23"><a xlink:title="akka.actor.Stash" xlink:href="Stash.html#inheritance-diagram"><polygon points="1679,-86 1609,-86 1609,-61 1679,-61 1679,-86" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-80.5" x="1619" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="1640" text-anchor="start">Stash</text></a></g></g><!-- node23&#45;&gt;node21 --><g class="edge inheritance" id="graph768_23_21"><g id="a_inheritance|graph768_23_21"><a xlink:title="AbstractActorWithStash is a subtype of Stash"><path d="M1603.78,-62.1562C1602.17,-61.762 1600.57,-61.3752 1599,-61 1545.02,-48.0864 1483.07,-34.3971 1439.94,-25.049" stroke="#d4d4d4" fill="none"></path><polygon points="1603.38,-63.8596 1608.65,-63.3572 1604.22,-60.4613 1603.38,-63.8596" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node23&#45;&gt;node38 --><g class="edge inheritance" id="graph768_23_38"><g id="a_inheritance|graph768_23_38"><a xlink:title="UntypedActorWithStash is a subtype of Stash"><path d="M1684.13,-61.9983C1685.44,-61.661 1686.73,-61.3275 1688,-61 1736.17,-48.5878 1791.38,-34.5924 1829.25,-25.0271" stroke="#d4d4d4" fill="none"></path><polygon points="1683.46,-60.365 1679.06,-63.3136 1684.34,-63.7531 1683.46,-60.365" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node24 --><g class="node trait" id="graph768_24"><g id="a_trait|graph768_24"><a xlink:title="akka.actor.PossiblyHarmful" xlink:href="PossiblyHarmful.html#inheritance-diagram"><polygon points="2963.5,-208 2848.5,-208 2848.5,-183 2963.5,-183 2963.5,-208" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-202.5" x="2859" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="2880" text-anchor="start">PossiblyHarmful</text></a></g></g><!-- node24&#45;&gt;node11 --><g class="edge inheritance" id="graph768_24_11"><g id="a_inheritance|graph768_24_11"><a xlink:title="Terminated is a subtype of PossiblyHarmful"><path d="M2930.95,-180.481C2949.02,-170.327 2973.17,-156.759 2990.2,-147.188" stroke="#d4d4d4" fill="none"></path><polygon points="2930,-179.009 2926.49,-182.984 2931.71,-182.06 2930,-179.009" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node24&#45;&gt;node13 --><g class="edge inheritance" id="graph768_24_13"><g id="a_inheritance|graph768_24_13"><a xlink:title="Kill is a subtype of PossiblyHarmful"><path d="M2878.01,-180.738C2857.3,-170.557 2829.4,-156.84 2809.77,-147.188" stroke="#d4d4d4" fill="none"></path><polygon points="2877.32,-182.348 2882.58,-182.984 2878.86,-179.208 2877.32,-182.348" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node24&#45;&gt;node19 --><g class="edge inheritance" id="graph768_24_19"><g id="a_inheritance|graph768_24_19"><a xlink:title="ReceiveTimeout is a subtype of PossiblyHarmful"><path d="M2901.51,-177.958C2898.85,-168.141 2895.54,-155.934 2893.15,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="2899.84,-178.476 2902.84,-182.843 2903.22,-177.56 2899.84,-178.476" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node40 --><g class="node class" id="graph768_40"><g id="a_class|graph768_40"><a xlink:title="akka.actor.PoisonPill" xlink:href="PoisonPill.html#inheritance-diagram"><polygon points="3163,-147 3075,-147 3075,-122 3163,-122 3163,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="3085" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="3106" text-anchor="start">PoisonPill</text></a></g></g><!-- node24&#45;&gt;node40 --><g class="edge inheritance" id="graph768_24_40"><g id="a_inheritance|graph768_24_40"><a xlink:title="PoisonPill is a subtype of PossiblyHarmful"><path d="M2952.49,-181.623C2989.65,-171.329 3041.29,-157.026 3077.17,-147.087" stroke="#d4d4d4" fill="none"></path><polygon points="2951.93,-179.963 2947.57,-182.984 2952.86,-183.336 2951.93,-179.963" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node25 --><g class="node object" id="graph768_25"><g id="a_object|graph768_25"><a xlink:title="akka.actor.SupervisorStrategy" xlink:href="SupervisorStrategy$.html#inheritance-diagram"><polygon points="4206,-147 4080,-147 4080,-122 4206,-122 4206,-147" stroke="#102966" fill="#3556a7"></polygon><image xlink:href="../../lib/object_diagram.png" y="-141.5" x="4090" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="4111" text-anchor="start">SupervisorStrategy</text></a></g></g><!-- node26 --><g class="node class" id="graph768_26"><g id="a_class|graph768_26"><a xlink:title="akka.actor.SupervisorStrategy" xlink:href="SupervisorStrategy.html#inheritance-diagram"><polygon points="4444,-208 4318,-208 4318,-183 4444,-183 4444,-208" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-202.5" x="4328" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="4349" text-anchor="start">SupervisorStrategy</text></a></g></g><!-- node48 --><g class="node class" id="graph768_48"><g id="a_class|graph768_48"><a xlink:title="akka.actor.AllForOneStrategy" xlink:href="AllForOneStrategy.html#inheritance-diagram"><polygon points="4396.5,-147 4271.5,-147 4271.5,-122 4396.5,-122 4396.5,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="4282" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="4303" text-anchor="start">AllForOneStrategy</text></a></g></g><!-- node26&#45;&gt;node48 --><g class="edge inheritance" id="graph768_26_48"><g id="a_inheritance|graph768_26_48"><a xlink:title="AllForOneStrategy is a subtype of SupervisorStrategy"><path d="M4368.46,-178.763C4360.54,-168.815 4350.47,-156.176 4343.27,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="4367.23,-180.023 4371.71,-182.843 4369.97,-177.842 4367.23,-180.023" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node66 --><g class="node class" id="graph768_66"><g id="a_class|graph768_66"><a xlink:title="akka.actor.OneForOneStrategy" xlink:href="OneForOneStrategy.html#inheritance-diagram"><polygon points="4547,-147 4415,-147 4415,-122 4547,-122 4547,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="4425" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="4446" text-anchor="start">OneForOneStrategy</text></a></g></g><!-- node26&#45;&gt;node66 --><g class="edge inheritance" id="graph768_26_66"><g id="a_inheritance|graph768_26_66"><a xlink:title="OneForOneStrategy is a subtype of SupervisorStrategy"><path d="M4405.44,-180.079C4422.61,-169.951 4445.27,-156.58 4461.28,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="4404.17,-178.795 4400.76,-182.843 4405.95,-181.81 4404.17,-178.795" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node27 --><g class="node class" id="graph768_27"><g id="a_class|graph768_27"><a xlink:title="akka.actor.AbstractLoggingActor" xlink:href="AbstractLoggingActor.html#inheritance-diagram"><polygon points="1232,-86 1094,-86 1094,-61 1232,-61 1232,-86" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-80.5" x="1104" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="1125" text-anchor="start">AbstractLoggingActor</text></a></g></g><!-- node28 --><g class="node class" id="graph768_28"><g id="a_class|graph768_28"><a xlink:title="akka.actor.PostRestartException" xlink:href="PostRestartException.html#inheritance-diagram"><polygon points="3715,-147 3575,-147 3575,-122 3715,-122 3715,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="3585" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="3606" text-anchor="start">PostRestartException</text></a></g></g><!-- node29 --><g class="node trait" id="graph768_29"><g id="a_trait|graph768_29"><a xlink:title="akka.actor.Scheduler" xlink:href="Scheduler.html#inheritance-diagram"><polygon points="4771,-208 4683,-208 4683,-183 4771,-183 4771,-208" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-202.5" x="4693" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="4714" text-anchor="start">Scheduler</text></a></g></g><!-- node45 --><g class="node class" id="graph768_45"><g id="a_class|graph768_45"><a xlink:title="akka.actor.AbstractSchedulerBase" xlink:href="AbstractSchedulerBase.html#inheritance-diagram"><polygon points="4712.5,-147 4565.5,-147 4565.5,-122 4712.5,-122 4712.5,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="4576" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="4597" text-anchor="start">AbstractSchedulerBase</text></a></g></g><!-- node29&#45;&gt;node45 --><g class="edge inheritance" id="graph768_29_45"><g id="a_inheritance|graph768_29_45"><a xlink:title="AbstractSchedulerBase is a subtype of Scheduler"><path d="M4705.1,-179.819C4690.04,-169.723 4670.32,-156.499 4656.35,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="4704.49,-181.513 4709.61,-182.843 4706.44,-178.606 4704.49,-181.513" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node70 --><g class="node class" id="graph768_70"><g id="a_class|graph768_70"><a xlink:title="akka.actor.LightArrayRevolverScheduler" xlink:href="LightArrayRevolverScheduler.html#inheritance-diagram"><polygon points="4899,-147 4731,-147 4731,-122 4899,-122 4899,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="4741" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="4762" text-anchor="start">LightArrayRevolverScheduler</text></a></g></g><!-- node29&#45;&gt;node70 --><g class="edge inheritance" id="graph768_29_70"><g id="a_inheritance|graph768_29_70"><a xlink:title="LightArrayRevolverScheduler is a subtype of Scheduler"><path d="M4748.9,-179.819C4763.96,-169.723 4783.68,-156.499 4797.65,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="4747.56,-178.606 4744.39,-182.843 4749.51,-181.513 4747.56,-178.606" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node30 --><g class="node object" id="graph768_30"><g id="a_object|graph768_30"><a xlink:title="akka.actor.NoScopeGiven" xlink:href="NoScopeGiven$.html#inheritance-diagram"><polygon points="3403,-86 3295,-86 3295,-61 3403,-61 3403,-86" stroke="#102966" fill="#3556a7"></polygon><image xlink:href="../../lib/object_diagram.png" y="-80.5" x="3305" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="3326" text-anchor="start">NoScopeGiven</text></a></g></g><!-- node31 --><g class="node class" id="graph768_31"><g id="a_class|graph768_31"><a xlink:title="akka.actor.NoScopeGiven" xlink:href="NoScopeGiven.html#inheritance-diagram"><polygon points="3403,-147 3295,-147 3295,-122 3403,-122 3403,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="3305" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="3326" text-anchor="start">NoScopeGiven</text></a></g></g><!-- node31&#45;&gt;node30 --><g class="edge inheritance" id="graph768_31_30"><g id="a_inheritance|graph768_31_30"><a xlink:title="NoScopeGiven is a subtype of NoScopeGiven"><path d="M3349,-116.687C3349,-106.917 3349,-94.8534 3349,-86.1323" stroke="#d4d4d4" fill="none"></path><polygon points="3347.25,-116.843 3349,-121.843 3350.75,-116.844 3347.25,-116.843" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node32 --><g class="node trait" id="graph768_32"><g id="a_trait|graph768_32"><a xlink:title="akka.actor.FSM" xlink:href="FSM.html#inheritance-diagram"><polygon points="2063.5,-147 1972.5,-147 1972.5,-122 2063.5,-122 2063.5,-147" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-141.5" x="1983" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="2004" text-anchor="start">FSM[S, D]</text></a></g></g><!-- node55 --><g class="node class" id="graph768_55"><g id="a_class|graph768_55"><a xlink:title="akka.actor.AbstractFSM" xlink:href="AbstractFSM.html#inheritance-diagram"><polygon points="2121,-86 1993,-86 1993,-61 2121,-61 2121,-86" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-80.5" x="2003" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="2024" text-anchor="start">AbstractFSM[S, D]</text></a></g></g><!-- node32&#45;&gt;node55 --><g class="edge inheritance" id="graph768_32_55"><g id="a_inheritance|graph768_32_55"><a xlink:title="AbstractFSM[S, D] is a subtype of FSM[S, D]"><path d="M2028.58,-117.496C2035.13,-107.59 2043.39,-95.0957 2049.31,-86.1323" stroke="#d4d4d4" fill="none"></path><polygon points="2027,-116.707 2025.71,-121.843 2029.92,-118.637 2027,-116.707" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node69 --><g class="node trait" id="graph768_69"><g id="a_trait|graph768_69"><a xlink:title="akka.actor.LoggingFSM" xlink:href="LoggingFSM.html#inheritance-diagram"><polygon points="2264.5,-86 2139.5,-86 2139.5,-61 2264.5,-61 2264.5,-86" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-80.5" x="2150" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="2171" text-anchor="start">LoggingFSM[S, D]</text></a></g></g><!-- node32&#45;&gt;node69 --><g class="edge inheritance" id="graph768_32_69"><g id="a_inheritance|graph768_32_69"><a xlink:title="LoggingFSM[S, D] is a subtype of FSM[S, D]"><path d="M2058.95,-120.37C2090.99,-110.095 2135.12,-95.9445 2165.86,-86.0875" stroke="#d4d4d4" fill="none"></path><polygon points="2058.14,-118.791 2053.91,-121.984 2059.21,-122.124 2058.14,-118.791" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node33 --><g class="node trait" id="graph768_33"><g id="a_trait|graph768_33"><a xlink:title="akka.actor.TypedActorFactory" xlink:href="TypedActorFactory.html#inheritance-diagram"><polygon points="4005,-208 3879,-208 3879,-183 4005,-183 4005,-208" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-202.5" x="3889" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="3910" text-anchor="start">TypedActorFactory</text></a></g></g><!-- node33&#45;&gt;node41 --><g class="edge inheritance" id="graph768_33_41"><g id="a_inheritance|graph768_33_41"><a xlink:title="TypedActorExtension is a subtype of TypedActorFactory"><path d="M3909.95,-180.994C3885.73,-170.788 3852.83,-156.921 3829.74,-147.188" stroke="#d4d4d4" fill="none"></path><polygon points="3909.39,-182.655 3914.67,-182.984 3910.75,-179.43 3909.39,-182.655" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node44 --><g class="node class" id="graph768_44"><g id="a_class|graph768_44"><a xlink:title="akka.actor.ContextualTypedActorFactory" xlink:href="ContextualTypedActorFactory.html#inheritance-diagram"><polygon points="4061.5,-147 3888.5,-147 3888.5,-122 4061.5,-122 4061.5,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="3899" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="3920" text-anchor="start">ContextualTypedActorFactory</text></a></g></g><!-- node33&#45;&gt;node44 --><g class="edge inheritance" id="graph768_33_44"><g id="a_inheritance|graph768_33_44"><a xlink:title="ContextualTypedActorFactory is a subtype of TypedActorFactory"><path d="M3951.1,-178.228C3956.62,-168.365 3963.53,-156.015 3968.49,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="3949.43,-177.625 3948.52,-182.843 3952.49,-179.334 3949.43,-177.625" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node34 --><g class="node class" id="graph768_34"><g id="a_class|graph768_34"><a xlink:title="akka.actor.ActorInitializationException" xlink:href="ActorInitializationException.html#inheritance-diagram"><polygon points="3648,-208 3486,-208 3486,-183 3648,-183 3648,-208" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-202.5" x="3496" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="3517" text-anchor="start">ActorInitializationException</text></a></g></g><!-- node34&#45;&gt;node20 --><g class="edge inheritance" id="graph768_34_20"><g id="a_inheritance|graph768_34_20"><a xlink:title="PreRestartException is a subtype of ActorInitializationException"><path d="M3547.59,-179.819C3534.24,-169.723 3516.76,-156.499 3504.38,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="3546.55,-181.223 3551.59,-182.843 3548.66,-178.431 3546.55,-181.223" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node34&#45;&gt;node28 --><g class="edge inheritance" id="graph768_34_28"><g id="a_inheritance|graph768_34_28"><a xlink:title="PostRestartException is a subtype of ActorInitializationException"><path d="M3586.41,-179.819C3599.76,-169.723 3617.24,-156.499 3629.62,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="3585.34,-178.431 3582.41,-182.843 3587.45,-181.223 3585.34,-178.431" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node35 --><g class="node trait" id="graph768_35"><g id="a_trait|graph768_35"><a xlink:title="akka.actor.ActorLogging" xlink:href="ActorLogging.html#inheritance-diagram"><polygon points="1953,-208 1851,-208 1851,-183 1953,-183 1953,-208" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-202.5" x="1861" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="1882" text-anchor="start">ActorLogging</text></a></g></g><!-- node35&#45;&gt;node27 --><g class="edge inheritance" id="graph768_35_27"><g id="a_inheritance|graph768_35_27"><a xlink:title="AbstractLoggingActor is a subtype of ActorLogging"><path d="M1845.61,-193.576C1778.63,-190.86 1664.44,-181.076 1573,-147 1553.71,-139.81 1553.37,-128.985 1534,-122 1410.58,-77.4865 1371.02,-103.57 1241,-86 1238.15,-85.6151 1235.25,-85.2159 1232.31,-84.8074" stroke="#d4d4d4" fill="none"></path><polygon points="1845.69,-195.33 1850.75,-193.774 1845.82,-191.832 1845.69,-195.33" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node35&#45;&gt;node32 --><g class="edge inheritance" id="graph768_35_32"><g id="a_inheritance|graph768_35_32"><a xlink:title="FSM[S, D] is a subtype of ActorLogging"><path d="M1929.31,-180.61C1949.3,-170.442 1976.12,-156.799 1995.02,-147.188" stroke="#d4d4d4" fill="none"></path><polygon points="1928.3,-179.158 1924.64,-182.984 1929.89,-182.277 1928.3,-179.158" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node36 --><g class="node class" id="graph768_36"><g id="a_class|graph768_36"><a xlink:title="akka.actor.AbstractActorWithUnrestrictedStash" xlink:href="AbstractActorWithUnrestrictedStash.html#inheritance-diagram"><polygon points="1453.5,-86 1250.5,-86 1250.5,-61 1453.5,-61 1453.5,-86" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-80.5" x="1261" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="1282" text-anchor="start">AbstractActorWithUnrestrictedStash</text></a></g></g><!-- node39 --><g class="node object" id="graph768_39"><g id="a_object|graph768_39"><a xlink:title="akka.actor.PoisonPill" xlink:href="PoisonPill$.html#inheritance-diagram"><polygon points="3163,-86 3075,-86 3075,-61 3163,-61 3163,-86" stroke="#102966" fill="#3556a7"></polygon><image xlink:href="../../lib/object_diagram.png" y="-80.5" x="3085" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="3106" text-anchor="start">PoisonPill</text></a></g></g><!-- node40&#45;&gt;node39 --><g class="edge inheritance" id="graph768_40_39"><g id="a_inheritance|graph768_40_39"><a xlink:title="PoisonPill is a subtype of PoisonPill"><path d="M3119,-116.687C3119,-106.917 3119,-94.8534 3119,-86.1323" stroke="#d4d4d4" fill="none"></path><polygon points="3117.25,-116.843 3119,-121.843 3120.75,-116.844 3117.25,-116.843" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node42 --><g class="node trait" id="graph768_42"><g id="a_trait|graph768_42"><a xlink:title="akka.actor.ActorRefFactory" xlink:href="ActorRefFactory.html#inheritance-diagram"><polygon points="2635.5,-208 2520.5,-208 2520.5,-183 2635.5,-183 2635.5,-208" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-202.5" x="2531" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="2552" text-anchor="start">ActorRefFactory</text></a></g></g><!-- node42&#45;&gt;node10 --><g class="edge inheritance" id="graph768_42_10"><g id="a_inheritance|graph768_42_10"><a xlink:title="ActorContext is a subtype of ActorRefFactory"><path d="M2560.27,-179.557C2548.33,-169.495 2532.82,-156.419 2521.8,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="2559.22,-180.959 2564.17,-182.843 2561.47,-178.283 2559.22,-180.959" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node58 --><g class="node class" id="graph768_58"><g id="a_class|graph768_58"><a xlink:title="akka.actor.ActorSystem" xlink:href="ActorSystem.html#inheritance-diagram"><polygon points="2699,-147 2597,-147 2597,-122 2699,-122 2699,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="2607" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="2628" text-anchor="start">ActorSystem</text></a></g></g><!-- node42&#45;&gt;node58 --><g class="edge inheritance" id="graph768_42_58"><g id="a_inheritance|graph768_42_58"><a xlink:title="ActorSystem is a subtype of ActorRefFactory"><path d="M2595.73,-179.557C2607.67,-169.495 2623.18,-156.419 2634.2,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="2594.53,-178.283 2591.83,-182.843 2596.78,-180.959 2594.53,-178.283" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node57 --><g class="node class" id="graph768_57"><g id="a_class|graph768_57"><a xlink:title="akka.actor.AbstractScheduler" xlink:href="AbstractScheduler.html#inheritance-diagram"><polygon points="4701.5,-86 4576.5,-86 4576.5,-61 4701.5,-61 4701.5,-86" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-80.5" x="4587" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="4608" text-anchor="start">AbstractScheduler</text></a></g></g><!-- node45&#45;&gt;node57 --><g class="edge inheritance" id="graph768_45_57"><g id="a_inheritance|graph768_45_57"><a xlink:title="AbstractScheduler is a subtype of AbstractSchedulerBase"><path d="M4639,-116.687C4639,-106.917 4639,-94.8534 4639,-86.1323" stroke="#d4d4d4" fill="none"></path><polygon points="4637.25,-116.843 4639,-121.843 4640.75,-116.844 4637.25,-116.843" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node46 --><g class="node class" id="graph768_46"><g id="a_class|graph768_46"><a xlink:title="akka.actor.DynamicAccess" xlink:href="DynamicAccess.html#inheritance-diagram"><polygon points="545,-208 429,-208 429,-183 545,-183 545,-208" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-202.5" x="439" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="460" text-anchor="start">DynamicAccess</text></a></g></g><!-- node46&#45;&gt;node1 --><g class="edge inheritance" id="graph768_46_1"><g id="a_inheritance|graph768_46_1"><a xlink:title="ReflectiveDynamicAccess is a subtype of DynamicAccess"><path d="M487,-177.687C487,-167.917 487,-155.853 487,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="485.25,-177.843 487,-182.843 488.75,-177.844 485.25,-177.843" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node50 --><g class="node class" id="graph768_50"><g id="a_class|graph768_50"><a xlink:title="akka.actor.RootActorPath" xlink:href="RootActorPath.html#inheritance-diagram"><polygon points="820,-147 712,-147 712,-122 820,-122 820,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="722" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="743" text-anchor="start">RootActorPath</text></a></g></g><!-- node51 --><g class="node class" id="graph768_51"><g id="a_class|graph768_51"><a xlink:title="akka.actor.DefaultSupervisorStrategy" xlink:href="DefaultSupervisorStrategy.html#inheritance-diagram"><polygon points="5073,-147 4917,-147 4917,-122 5073,-122 5073,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="4927" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="4948" text-anchor="start">DefaultSupervisorStrategy</text></a></g></g><!-- node52 --><g class="node trait" id="graph768_52"><g id="a_trait|graph768_52"><a xlink:title="akka.actor.SupervisorStrategyLowPriorityImplicits" xlink:href="SupervisorStrategyLowPriorityImplicits.html#inheritance-diagram"><polygon points="4248,-208 4038,-208 4038,-183 4248,-183 4248,-208" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-202.5" x="4048" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="4069" text-anchor="start">SupervisorStrategyLowPriorityImplicits</text></a></g></g><!-- node52&#45;&gt;node25 --><g class="edge inheritance" id="graph768_52_25"><g id="a_inheritance|graph768_52_25"><a xlink:title="SupervisorStrategy is a subtype of SupervisorStrategyLowPriorityImplicits"><path d="M4143,-177.687C4143,-167.917 4143,-155.853 4143,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="4141.25,-177.843 4143,-182.843 4144.75,-177.844 4141.25,-177.843" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node53 --><g class="node trait" id="graph768_53"><g id="a_trait|graph768_53"><a xlink:title="akka.actor.SupervisorStrategyConfigurator" xlink:href="SupervisorStrategyConfigurator.html#inheritance-diagram"><polygon points="5173,-208 4995,-208 4995,-183 5173,-183 5173,-208" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-202.5" x="5005" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="5026" text-anchor="start">SupervisorStrategyConfigurator</text></a></g></g><!-- node53&#45;&gt;node51 --><g class="edge inheritance" id="graph768_53_51"><g id="a_inheritance|graph768_53_51"><a xlink:title="DefaultSupervisorStrategy is a subtype of SupervisorStrategyConfigurator"><path d="M5062.25,-180.079C5046.97,-169.951 5026.8,-156.58 5012.55,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="5061.28,-181.539 5066.42,-182.843 5063.22,-178.622 5061.28,-181.539" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node61 --><g class="node class" id="graph768_61"><g id="a_class|graph768_61"><a xlink:title="akka.actor.StoppingSupervisorStrategy" xlink:href="StoppingSupervisorStrategy.html#inheritance-diagram"><polygon points="5256.5,-147 5091.5,-147 5091.5,-122 5256.5,-122 5256.5,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="5102" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="5123" text-anchor="start">StoppingSupervisorStrategy</text></a></g></g><!-- node53&#45;&gt;node61 --><g class="edge inheritance" id="graph768_53_61"><g id="a_inheritance|graph768_53_61"><a xlink:title="StoppingSupervisorStrategy is a subtype of SupervisorStrategyConfigurator"><path d="M5106,-180.079C5121.45,-169.951 5141.84,-156.58 5156.26,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="5105,-178.639 5101.78,-182.843 5106.92,-181.566 5105,-178.639" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node54 --><g class="node trait" id="graph768_54"><g id="a_trait|graph768_54"><a xlink:title="akka.actor.UnrestrictedStash" xlink:href="UnrestrictedStash.html#inheritance-diagram"><polygon points="1705.5,-147 1582.5,-147 1582.5,-122 1705.5,-122 1705.5,-147" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-141.5" x="1593" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="1614" text-anchor="start">UnrestrictedStash</text></a></g></g><!-- node54&#45;&gt;node23 --><g class="edge inheritance" id="graph768_54_23"><g id="a_inheritance|graph768_54_23"><a xlink:title="Stash is a subtype of UnrestrictedStash"><path d="M1644,-116.687C1644,-106.917 1644,-94.8534 1644,-86.1323" stroke="#d4d4d4" fill="none"></path><polygon points="1642.25,-116.843 1644,-121.843 1645.75,-116.844 1642.25,-116.843" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node54&#45;&gt;node36 --><g class="edge inheritance" id="graph768_54_36"><g id="a_inheritance|graph768_54_36"><a xlink:title="AbstractActorWithUnrestrictedStash is a subtype of UnrestrictedStash"><path d="M1581.82,-120.936C1530.77,-110.621 1459.04,-96.1271 1409.35,-86.0875" stroke="#d4d4d4" fill="none"></path><polygon points="1581.76,-122.709 1587.01,-121.984 1582.45,-119.278 1581.76,-122.709" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node54&#45;&gt;node49 --><g class="edge inheritance" id="graph768_54_49"><g id="a_inheritance|graph768_54_49"><a xlink:title="UntypedActorWithUnrestrictedStash is a subtype of UnrestrictedStash"><path d="M1678.94,-120.115C1705.7,-109.863 1742.24,-95.8634 1767.75,-86.0875" stroke="#d4d4d4" fill="none"></path><polygon points="1678.1,-118.561 1674.06,-121.984 1679.35,-121.829 1678.1,-118.561" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node67 --><g class="node trait" id="graph768_67"><g id="a_trait|graph768_67"><a xlink:title="akka.actor.UnboundedStash" xlink:href="UnboundedStash.html#inheritance-diagram"><polygon points="1590.5,-86 1471.5,-86 1471.5,-61 1590.5,-61 1590.5,-86" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-80.5" x="1482" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="1503" text-anchor="start">UnboundedStash</text></a></g></g><!-- node54&#45;&gt;node67 --><g class="edge inheritance" id="graph768_54_67"><g id="a_inheritance|graph768_54_67"><a xlink:title="UnboundedStash is a subtype of UnrestrictedStash"><path d="M1617.15,-119.481C1597.7,-109.327 1571.72,-95.7588 1553.39,-86.1884" stroke="#d4d4d4" fill="none"></path><polygon points="1616.7,-121.221 1621.94,-121.984 1618.32,-118.119 1616.7,-121.221" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node64 --><g class="node class" id="graph768_64"><g id="a_class|graph768_64"><a xlink:title="akka.actor.AbstractLoggingFSM" xlink:href="AbstractLoggingFSM.html#inheritance-diagram"><polygon points="2210,-25 2048,-25 2048,-0 2210,-0 2210,-25" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-19.5" x="2058" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9.5" x="2079" text-anchor="start">AbstractLoggingFSM[S, D]</text></a></g></g><!-- node55&#45;&gt;node64 --><g class="edge inheritance" id="graph768_55_64"><g id="a_inheritance|graph768_55_64"><a xlink:title="AbstractLoggingFSM[S, D] is a subtype of AbstractFSM[S, D]"><path d="M2075.24,-57.5567C2087.51,-47.4951 2103.47,-34.4187 2114.8,-25.1323" stroke="#d4d4d4" fill="none"></path><polygon points="2073.98,-56.3208 2071.22,-60.8435 2076.2,-59.0279 2073.98,-56.3208" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node56 --><g class="node trait" id="graph768_56"><g id="a_trait|graph768_56"><a xlink:title="akka.actor.Scope" xlink:href="Scope.html#inheritance-diagram"><polygon points="3325,-208 3253,-208 3253,-183 3325,-183 3325,-208" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-202.5" x="3263" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="3284" text-anchor="start">Scope</text></a></g></g><!-- node56&#45;&gt;node17 --><g class="edge inheritance" id="graph768_56_17"><g id="a_inheritance|graph768_56_17"><a xlink:title="LocalScope is a subtype of Scope"><path d="M3273.54,-179.294C3263.34,-169.268 3250.19,-156.338 3240.83,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="3272.35,-180.586 3277.15,-182.843 3274.81,-178.09 3272.35,-180.586" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node56&#45;&gt;node31 --><g class="edge inheritance" id="graph768_56_31"><g id="a_inheritance|graph768_56_31"><a xlink:title="NoScopeGiven is a subtype of Scope"><path d="M3304.46,-179.294C3314.66,-169.268 3327.81,-156.338 3337.17,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="3303.19,-178.09 3300.85,-182.843 3305.65,-180.586 3303.19,-178.09" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node58&#45;&gt;node8 --><g class="edge inheritance" id="graph768_58_8"><g id="a_inheritance|graph768_58_8"><a xlink:title="ExtendedActorSystem is a subtype of ActorSystem"><path d="M2653.33,-116.958C2656.49,-107.141 2660.42,-94.9342 2663.25,-86.1323" stroke="#d4d4d4" fill="none"></path><polygon points="2651.62,-116.548 2651.75,-121.843 2654.95,-117.621 2651.62,-116.548" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node59 --><g class="node class" id="graph768_59"><g id="a_class|graph768_59"><a xlink:title="akka.actor.AbstractActor" xlink:href="AbstractActor.html#inheritance-diagram"><polygon points="1215.5,-147 1110.5,-147 1110.5,-122 1215.5,-122 1215.5,-147" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-141.5" x="1121" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="1142" text-anchor="start">AbstractActor</text></a></g></g><!-- node59&#45;&gt;node21 --><g class="edge inheritance" id="graph768_59_21"><g id="a_inheritance|graph768_59_21"><a xlink:title="AbstractActorWithStash is a subtype of AbstractActor"><path d="M1129.66,-119.785C1100.61,-105.901 1065.9,-83.3466 1085,-61 1099.54,-43.9825 1226.42,-28.7046 1310.74,-20.3043" stroke="#d4d4d4" fill="none"></path><polygon points="1129,-121.405 1134.27,-121.938 1130.48,-118.235 1129,-121.405" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node59&#45;&gt;node27 --><g class="edge inheritance" id="graph768_59_27"><g id="a_inheritance|graph768_59_27"><a xlink:title="AbstractLoggingActor is a subtype of AbstractActor"><path d="M1163,-116.687C1163,-106.917 1163,-94.8534 1163,-86.1323" stroke="#d4d4d4" fill="none"></path><polygon points="1161.25,-116.843 1163,-121.843 1164.75,-116.844 1161.25,-116.843" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node59&#45;&gt;node36 --><g class="edge inheritance" id="graph768_59_36"><g id="a_inheritance|graph768_59_36"><a xlink:title="AbstractActorWithUnrestrictedStash is a subtype of AbstractActor"><path d="M1205.06,-120.37C1237.97,-110.095 1283.3,-95.9445 1314.88,-86.0875" stroke="#d4d4d4" fill="none"></path><polygon points="1204.14,-118.824 1199.89,-121.984 1205.18,-122.165 1204.14,-118.824" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node68 --><g class="node class" id="graph768_68"><g id="a_class|graph768_68"><a xlink:title="akka.actor.AbstractActorWithUnboundedStash" xlink:href="AbstractActorWithUnboundedStash.html#inheritance-diagram"><polygon points="1233.5,-25 1034.5,-25 1034.5,-0 1233.5,-0 1233.5,-25" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-19.5" x="1045" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9.5" x="1066" text-anchor="start">AbstractActorWithUnboundedStash</text></a></g></g><!-- node59&#45;&gt;node68 --><g class="edge inheritance" id="graph768_59_68"><g id="a_inheritance|graph768_59_68"><a xlink:title="AbstractActorWithUnboundedStash is a subtype of AbstractActor"><path d="M1105.4,-122.607C1085,-115.679 1064.13,-104.384 1052,-86 1034.94,-60.1462 1072.85,-37.8233 1102.64,-25.0164" stroke="#d4d4d4" fill="none"></path><polygon points="1104.99,-124.315 1110.29,-124.191 1106.07,-120.986 1104.99,-124.315" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node60 --><g class="node trait" id="graph768_60"><g id="a_trait|graph768_60"><a xlink:title="akka.actor.DeadLetterSuppression" xlink:href="DeadLetterSuppression.html#inheritance-diagram"><polygon points="3159,-208 3013,-208 3013,-183 3159,-183 3159,-208" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-202.5" x="3023" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="3044" text-anchor="start">DeadLetterSuppression</text></a></g></g><!-- node60&#45;&gt;node11 --><g class="edge inheritance" id="graph768_60_11"><g id="a_inheritance|graph768_60_11"><a xlink:title="Terminated is a subtype of DeadLetterSuppression"><path d="M3067,-179.557C3054.21,-169.495 3037.59,-156.419 3025.79,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="3066.17,-181.127 3071.18,-182.843 3068.33,-178.377 3066.17,-181.127" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node60&#45;&gt;node40 --><g class="edge inheritance" id="graph768_60_40"><g id="a_inheritance|graph768_60_40"><a xlink:title="PoisonPill is a subtype of DeadLetterSuppression"><path d="M3095.1,-178.228C3100.62,-168.365 3107.53,-156.015 3112.49,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="3093.43,-177.625 3092.52,-182.843 3096.49,-179.334 3093.43,-177.625" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node63 --><g class="node trait" id="graph768_63"><g id="a_trait|graph768_63"><a xlink:title="akka.actor.ActorPath" xlink:href="ActorPath.html#inheritance-diagram"><polygon points="746,-208 658,-208 658,-183 746,-183 746,-208" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-202.5" x="668" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="689" text-anchor="start">ActorPath</text></a></g></g><!-- node63&#45;&gt;node2 --><g class="edge inheritance" id="graph768_63_2"><g id="a_inheritance|graph768_63_2"><a xlink:title="ChildActorPath is a subtype of ActorPath"><path d="M685.763,-179.294C675.057,-169.268 661.251,-156.338 651.421,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="684.707,-180.703 689.553,-182.843 687.1,-178.148 684.707,-180.703" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node63&#45;&gt;node50 --><g class="edge inheritance" id="graph768_63_50"><g id="a_inheritance|graph768_63_50"><a xlink:title="RootActorPath is a subtype of ActorPath"><path d="M718.495,-179.294C729.37,-169.268 743.396,-156.338 753.382,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="717.134,-178.168 714.644,-182.843 719.507,-180.741 717.134,-178.168" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node65 --><g class="node trait" id="graph768_65"><g id="a_trait|graph768_65"><a xlink:title="akka.actor.Actor" xlink:href="Actor.html#inheritance-diagram"><polygon points="1678,-208 1610,-208 1610,-183 1678,-183 1678,-208" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-202.5" x="1620" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-192.5" x="1641" text-anchor="start">Actor</text></a></g></g><!-- node65&#45;&gt;node5 --><g class="edge inheritance" id="graph768_65_5"><g id="a_inheritance|graph768_65_5"><a xlink:title="DiagnosticActorLogging is a subtype of Actor"><path d="M1604.81,-182.458C1571.13,-172.108 1522.87,-157.278 1489.64,-147.067" stroke="#d4d4d4" fill="none"></path><polygon points="1604.38,-184.156 1609.67,-183.952 1605.41,-180.81 1604.38,-184.156" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node65&#45;&gt;node15 --><g class="edge inheritance" id="graph768_65_15"><g id="a_inheritance|graph768_65_15"><a xlink:title="UntypedActor is a subtype of Actor"><path d="M1683.28,-183.918C1721.77,-173.549 1780.27,-157.787 1819.99,-147.086" stroke="#d4d4d4" fill="none"></path><polygon points="1682.59,-182.291 1678.22,-185.281 1683.5,-185.67 1682.59,-182.291" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node65&#45;&gt;node32 --><g class="edge inheritance" id="graph768_65_32"><g id="a_inheritance|graph768_65_32"><a xlink:title="FSM[S, D] is a subtype of Actor"><path d="M1683.48,-188.271C1753.31,-177.256 1898.19,-154.401 1972.25,-142.717" stroke="#d4d4d4" fill="none"></path><polygon points="1682.85,-186.6 1678.18,-189.108 1683.39,-190.057 1682.85,-186.6" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node65&#45;&gt;node54 --><g class="edge inheritance" id="graph768_65_54"><g id="a_inheritance|graph768_65_54"><a xlink:title="UnrestrictedStash is a subtype of Actor"><path d="M1644,-177.687C1644,-167.917 1644,-155.853 1644,-147.132" stroke="#d4d4d4" fill="none"></path><polygon points="1642.25,-177.843 1644,-182.843 1645.75,-177.844 1642.25,-177.843" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node65&#45;&gt;node59 --><g class="edge inheritance" id="graph768_65_59"><g id="a_inheritance|graph768_65_59"><a xlink:title="AbstractActor is a subtype of Actor"><path d="M1604.79,-189.691C1518.71,-179.132 1313.13,-153.915 1215.81,-141.977" stroke="#d4d4d4" fill="none"></path><polygon points="1604.62,-191.432 1609.79,-190.304 1605.04,-187.958 1604.62,-191.432" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node67&#45;&gt;node47 --><g class="edge inheritance" id="graph768_67_47"><g id="a_inheritance|graph768_67_47"><a xlink:title="UntypedActorWithUnboundedStash is a subtype of UnboundedStash"><path d="M1550.25,-57.5567C1563.21,-47.4951 1580.05,-34.4187 1592.02,-25.1323" stroke="#d4d4d4" fill="none"></path><polygon points="1548.89,-56.395 1546.02,-60.8435 1551.04,-59.1597 1548.89,-56.395" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node67&#45;&gt;node68 --><g class="edge inheritance" id="graph768_67_68"><g id="a_inheritance|graph768_67_68"><a xlink:title="AbstractActorWithUnboundedStash is a subtype of UnboundedStash"><path d="M1465.98,-61.6231C1464.64,-61.4123 1463.31,-61.2044 1462,-61 1378.71,-48.0298 1283.33,-34.3487 1216.98,-25.018" stroke="#d4d4d4" fill="none"></path><polygon points="1465.96,-63.3926 1471.17,-62.4487 1466.51,-59.936 1465.96,-63.3926" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node69&#45;&gt;node64 --><g class="edge inheritance" id="graph768_69_64"><g id="a_inheritance|graph768_69_64"><a xlink:title="AbstractLoggingFSM[S, D] is a subtype of LoggingFSM[S, D]"><path d="M2183.51,-57.5567C2171.06,-47.4951 2154.88,-34.4187 2143.39,-25.1323" stroke="#d4d4d4" fill="none"></path><polygon points="2182.59,-59.0616 2187.58,-60.8435 2184.79,-56.3395 2182.59,-59.0616" stroke="#d4d4d4" fill="none"></polygon></a></g></g></g></svg></div>
+              </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="akka.actor"><span>actor</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="akka.actor.AbstractActor" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbstractActorextendsActor"></a>
+      <a id="AbstractActor:AbstractActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractActor.html"><span class="name">AbstractActor</span></a><span class="result"> extends <a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Java API: compatible with lambda expressions</p>
+    </li><li name="akka.actor.AbstractActorContext" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbstractActorContextextendsActorContext"></a>
+      <a id="AbstractActorContext:AbstractActorContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractActorContext.html"><span class="name">AbstractActorContext</span></a><span class="result"> extends <a href="ActorContext.html" class="extype" name="akka.actor.ActorContext">ActorContext</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">AbstractActorContext is the AbstractActor equivalent of ActorContext,
+containing the Java API
+</p>
+    </li><li name="akka.actor.AbstractActorWithStash" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbstractActorWithStashextendsAbstractActorwithStash"></a>
+      <a id="AbstractActorWithStash:AbstractActorWithStash"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractActorWithStash.html"><span class="name">AbstractActorWithStash</span></a><span class="result"> extends <a href="AbstractActor.html" class="extype" name="akka.actor.AbstractActor">AbstractActor</a> with <a href="Stash.html" class="extype" name="akka.actor.Stash">Stash</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Java API: compatible with lambda expressions</p>
+    </li><li name="akka.actor.AbstractActorWithUnboundedStash" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbstractActorWithUnboundedStashextendsAbstractActorwithUnboundedStash"></a>
+      <a id="AbstractActorWithUnboundedStash:AbstractActorWithUnboundedStash"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractActorWithUnboundedStash.html"><span class="name">AbstractActorWithUnboundedStash</span></a><span class="result"> extends <a href="AbstractActor.html" class="extype" name="akka.actor.AbstractActor">AbstractActor</a> with <a href="UnboundedStash.html" class="extype" name="akka.actor.UnboundedStash">UnboundedStash</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Java API: compatible with lambda expressions</p>
+    </li><li name="akka.actor.AbstractActorWithUnrestrictedStash" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbstractActorWithUnrestrictedStashextendsAbstractActorwithUnrestrictedStash"></a>
+      <a id="AbstractActorWithUnrestrictedStash:AbstractActorWithUnrestrictedStash"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractActorWithUnrestrictedStash.html"><span class="name">AbstractActorWithUnrestrictedStash</span></a><span class="result"> extends <a href="AbstractActor.html" class="extype" name="akka.actor.AbstractActor">AbstractActor</a> with <a href="UnrestrictedStash.html" class="extype" name="akka.actor.UnrestrictedStash">UnrestrictedStash</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Java API: compatible with lambda expressions</p>
+    </li><li name="akka.actor.AbstractExtensionId" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbstractExtensionId[T&lt;:akka.actor.Extension]extendsExtensionId[T]"></a>
+      <a id="AbstractExtensionId[T&lt;:Extension]:AbstractExtensionId[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractExtensionId.html"><span class="name">AbstractExtensionId</span></a><span class="tparams">[<span name="T">T &lt;: <a href="Extension.html" class="extype" name="akka.actor.Extension">Extension</a></span>]</span><span class="result"> extends <a href="ExtensionId.html" class="extype" name="akka.actor.ExtensionId">ExtensionId</a>[<span class="extype" name="akka.actor.AbstractExtensionId.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Java API for ExtensionId
+</p>
+    </li><li name="akka.actor.AbstractFSM" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbstractFSM[S,D]extendsFSM[S,D]"></a>
+      <a id="AbstractFSM[S,D]:AbstractFSM[S,D]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractFSM.html"><span class="name">AbstractFSM</span></a><span class="tparams">[<span name="S">S</span>, <span name="D">D</span>]</span><span class="result"> extends <a href="FSM.html" class="extype" name="akka.actor.FSM">FSM</a>[<span class="extype" name="akka.actor.AbstractFSM.S">S</span>, <span class="extype" name="akka.actor.AbstractFSM.D">D</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Java API: compatible with lambda expressions</p>
+    </li><li name="akka.actor.AbstractLoggingActor" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbstractLoggingActorextendsAbstractActorwithActorLogging"></a>
+      <a id="AbstractLoggingActor:AbstractLoggingActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractLoggingActor.html"><span class="name">AbstractLoggingActor</span></a><span class="result"> extends <a href="AbstractActor.html" class="extype" name="akka.actor.AbstractActor">AbstractActor</a> with <a href="ActorLogging.html" class="extype" name="akka.actor.ActorLogging">ActorLogging</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Java API: compatible with lambda expressions</p>
+    </li><li name="akka.actor.AbstractLoggingFSM" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbstractLoggingFSM[S,D]extendsAbstractFSM[S,D]withLoggingFSM[S,D]"></a>
+      <a id="AbstractLoggingFSM[S,D]:AbstractLoggingFSM[S,D]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractLoggingFSM.html"><span class="name">AbstractLoggingFSM</span></a><span class="tparams">[<span name="S">S</span>, <span name="D">D</span>]</span><span class="result"> extends <a href="AbstractFSM.html" class="extype" name="akka.actor.AbstractFSM">AbstractFSM</a>[<span class="extype" name="akka.actor.AbstractLoggingFSM.S">S</span>, <span class="extype" name="akka.actor.AbstractLoggingFSM.D">D</span>] with <a href="LoggingFSM.html" class="extype" name="akka.actor.LoggingFSM">LoggingFSM</a>[<span class="extype" name="akka.actor.AbstractLoggingFSM.S">S</span>, <span class="extype" name="akka.actor.AbstractLoggingFSM.D">D</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Java API: compatible with lambda expressions</p>
+    </li><li name="akka.actor.AbstractScheduler" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbstractSchedulerextendsAbstractSchedulerBase"></a>
+      <a id="AbstractScheduler:AbstractScheduler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractScheduler.html"><span class="name">AbstractScheduler</span></a><span class="result"> extends <a href="AbstractSchedulerBase.html" class="extype" name="akka.actor.AbstractSchedulerBase">AbstractSchedulerBase</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.AbstractSchedulerBase" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbstractSchedulerBaseextendsScheduler"></a>
+      <a id="AbstractSchedulerBase:AbstractSchedulerBase"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractSchedulerBase.html"><span class="name">AbstractSchedulerBase</span></a><span class="result"> extends <a href="Scheduler.html" class="extype" name="akka.actor.Scheduler">Scheduler</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.Actor" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ActorextendsAnyRef"></a>
+      <a id="Actor:Actor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Actor.html"><span class="name">Actor</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Actor base trait that should be extended by or mixed to create an Actor with the semantics of the 'Actor Model':
+<a href="http://en.wikipedia.org/wiki/Actor_model">http://en.wikipedia.org/wiki/Actor_model</a></a></p>
+    </li><li name="akka.actor.ActorContext" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ActorContextextendsActorRefFactory"></a>
+      <a id="ActorContext:ActorContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorContext.html"><span class="name">ActorContext</span></a><span class="result"> extends <a href="ActorRefFactory.html" class="extype" name="akka.actor.ActorRefFactory">ActorRefFactory</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">The actor context - the view of the actor cell from the actor.</p>
+    </li><li name="akka.actor.ActorIdentity" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ActorIdentityextendsProductwithSerializable"></a>
+      <a id="ActorIdentity:ActorIdentity"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorIdentity.html"><span class="name">ActorIdentity</span></a><span class="params">(<span name="correlationId">correlationId: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></span>, <span name="ref">ref: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="ActorRef.html" class="extype" name="akka.actor.ActorRef">ActorRef</a>]</span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Reply to <a href="Identify.html" class="extype" name="akka.actor.Identify">akka.actor.Identify</a>.</p>
+    </li><li name="akka.actor.ActorInitializationException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ActorInitializationExceptionextendsAkkaException"></a>
+      <a id="ActorInitializationException:ActorInitializationException"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorInitializationException.html"><span class="name">ActorInitializationException</span></a><span class="result"> extends <a href="../AkkaException.html" class="extype" name="akka.AkkaException">AkkaException</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An ActorInitializationException is thrown when the the initialization logic for an Actor fails.</p>
+    </li><li name="akka.actor.ActorInterruptedException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ActorInterruptedExceptionextendsAkkaException"></a>
+      <a id="ActorInterruptedException:ActorInterruptedException"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorInterruptedException.html"><span class="name">ActorInterruptedException</span></a><span class="result"> extends <a href="../AkkaException.html" class="extype" name="akka.AkkaException">AkkaException</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">When an InterruptedException is thrown inside an Actor, it is wrapped as an ActorInterruptedException as to
+avoid cascading interrupts to other threads than the originally interrupted one.</p>
+    </li><li name="akka.actor.ActorKilledException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ActorKilledExceptionextendsAkkaExceptionwithNoStackTracewithProductwithSerializable"></a>
+      <a id="ActorKilledException:ActorKilledException"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorKilledException.html"><span class="name">ActorKilledException</span></a><span class="result"> extends <a href="../AkkaException.html" class="extype" name="akka.AkkaException">AkkaException</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.util.control.NoStackTrace" class="extype" target="_top">NoStackTrace</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">ActorKilledException is thrown when an Actor receives the <a href="Kill.html" class="extype" name="akka.actor.Kill">akka.actor.Kill</a> message
+</p>
+    </li><li name="akka.actor.ActorLogging" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ActorLoggingextendsAnyRef"></a>
+      <a id="ActorLogging:ActorLogging"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorLogging.html"><span class="name">ActorLogging</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Scala API: Mix in ActorLogging into your Actor to easily obtain a reference to a logger,
+which is available under the name &quot;log&quot;.</p>
+    </li><li name="akka.actor.ActorNotFound" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ActorNotFoundextendsRuntimeExceptionwithProductwithSerializable"></a>
+      <a id="ActorNotFound:ActorNotFound"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorNotFound.html"><span class="name">ActorNotFound</span></a><span class="params">(<span name="selection">selection: <a href="ActorSelection.html" class="extype" name="akka.actor.ActorSelection">ActorSelection</a></span>)</span><span class="result"> extends <span class="extype" name="scala.RuntimeException">RuntimeException</span> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">When <a href="ActorSelection.html#resolveOne(timeout:scala.concurrent.duration.FiniteDuration):scala.concurrent.Future[akka.actor.ActorRef]" class="extmbr" name="akka.actor.ActorSelection#resolveOne">ActorSelection#resolveOne</a> can't identify the actor the
+<code>Future</code> is completed with this failure.</p>
+    </li><li name="akka.actor.ActorPath" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ActorPathextendsComparable[akka.actor.ActorPath]withSerializable"></a>
+      <a id="ActorPath:ActorPath"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorPath.html"><span class="name">ActorPath</span></a><span class="result"> extends <span class="extype" name="java.lang.Comparable">Comparable</span>[<a href="ActorPath.html" class="extype" name="akka.actor.ActorPath">ActorPath</a>] with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Actor path is a unique path to an actor that shows the creation path
+up through the actor tree to the root actor.</p>
+    </li><li name="akka.actor.ActorRef" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ActorRefextendsComparable[akka.actor.ActorRef]withSerializable"></a>
+      <a id="ActorRef:ActorRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorRef.html"><span class="name">ActorRef</span></a><span class="result"> extends <span class="extype" name="java.lang.Comparable">Comparable</span>[<a href="ActorRef.html" class="extype" name="akka.actor.ActorRef">ActorRef</a>] with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Immutable and serializable handle to an actor, which may or may not reside
+on the local host or inside the same <a href="ActorSystem.html" class="extype" name="akka.actor.ActorSystem">akka.actor.ActorSystem</a>.</p>
+    </li><li name="akka.actor.ActorRefFactory" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ActorRefFactoryextendsAnyRef"></a>
+      <a id="ActorRefFactory:ActorRefFactory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorRefFactory.html"><span class="name">ActorRefFactory</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Interface implemented by ActorSystem and ActorContext, the only two places
+from which you can get fresh actors.</p>
+    </li><li name="akka.actor.ActorRefProvider" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ActorRefProviderextendsAnyRef"></a>
+      <a id="ActorRefProvider:ActorRefProvider"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorRefProvider.html"><span class="name">ActorRefProvider</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Interface for all ActorRef providers to implement.</p>
+    </li><li name="akka.actor.ActorSelection" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ActorSelectionextendsSerializable"></a>
+      <a id="ActorSelection:ActorSelection"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorSelection.html"><span class="name">ActorSelection</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An ActorSelection is a logical view of a section of an ActorSystem's tree of Actors,
+allowing for broadcasting of messages to that section.</p>
+    </li><li name="akka.actor.ActorSystem" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ActorSystemextendsActorRefFactory"></a>
+      <a id="ActorSystem:ActorSystem"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorSystem.html"><span class="name">ActorSystem</span></a><span class="result"> extends <a href="ActorRefFactory.html" class="extype" name="akka.actor.ActorRefFactory">ActorRefFactory</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An actor system is a hierarchical group of actors which share common
+configuration, e.</p>
+    </li><li name="akka.actor.Address" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AddressextendsProductwithSerializable"></a>
+      <a id="Address:Address"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Address.html"><span class="name">Address</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">The address specifies the physical location under which an Actor can be
+reached.</p>
+    </li><li name="akka.actor.AllDeadLetters" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AllDeadLettersextendsAnyRef"></a>
+      <a id="AllDeadLetters:AllDeadLetters"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="AllDeadLetters.html"><span class="name">AllDeadLetters</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Subscribe to this class to be notified about all DeadLetters (also the supressed ones).</p>
+    </li><li name="akka.actor.AllForOneStrategy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AllForOneStrategyextendsSupervisorStrategywithProductwithSerializable"></a>
+      <a id="AllForOneStrategy:AllForOneStrategy"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="AllForOneStrategy.html"><span class="name">AllForOneStrategy</span></a><span class="params">(<span name="maxNrOfRetries">maxNrOfRetries: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Int" class="extype" target="_top">Int</a> = <span class="symbol">-1</span></span>, <span name="withinTimeRange">withinTimeRange: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.concurrent.duration.Duration" class="extype" target="_top">Duration</a> = <span class="defval" name="scala.concurrent.duration.Duration.Inf">...</span></span>, <span name="loggingEnabled">loggingEnabled: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Boolean" class="extype" target="_top">Boolean</a> = <span class="symbol">true</span></span>)</span><span class="params">(<span name="decider">decider: <a href="SupervisorStrategy$.html#Decider=PartialFunction[Throwable,akka.actor.SupervisorStrategy.Directive]" class="extmbr" name="akka.actor.SupervisorStrategy.Decider">Decider</a></span>)</span><span class="result"> extends <a href="SupervisorStrategy.html" class="extype" name="akka.actor.SupervisorStrategy">SupervisorStrategy</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Applies the fault handling <code>Directive</code> (Resume, Restart, Stop) specified in the <code>Decider</code>
+to all children when one fails, as opposed to <a href="OneForOneStrategy.html" class="extype" name="akka.actor.OneForOneStrategy">akka.actor.OneForOneStrategy</a> that applies
+it only to the child actor that failed.</p>
+    </li><li name="akka.actor.Cancellable" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CancellableextendsAnyRef"></a>
+      <a id="Cancellable:Cancellable"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Cancellable.html"><span class="name">Cancellable</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Signifies something that can be cancelled
+There is no strict guarantee that the implementation is thread-safe,
+but it should be good practice to make it so.</p>
+    </li><li name="akka.actor.ChildActorPath" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ChildActorPathextendsActorPath"></a>
+      <a id="ChildActorPath:ChildActorPath"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ChildActorPath.html"><span class="name">ChildActorPath</span></a><span class="result"> extends <a href="ActorPath.html" class="extype" name="akka.actor.ActorPath">ActorPath</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@SerialVersionUID</span><span class="args">(<span>
+      
+      <span class="symbol">1L</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="akka.actor.ChildRestartStats" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ChildRestartStatsextendsChildStatswithProductwithSerializable"></a>
+      <a id="ChildRestartStats:ChildRestartStats"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ChildRestartStats.html"><span class="name">ChildRestartStats</span></a><span class="params">(<span name="child">child: <a href="ActorRef.html" class="extype" name="akka.actor.ActorRef">ActorRef</a></span>, <span name="maxNrOfRetriesCount">maxNrOfRetriesCount: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Int" class="extype" target="_top">Int</a> = <span class="symbol">0</span></span>, <span name="restartTimeWindowStartNanos">restartTimeWindowStartNanos: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Long" class="extype" target="_top">Long</a> = <span class="symbol">0L</span></span>)</span><span class="result"> extends <span class="extype" name="akka.actor.ChildStats">ChildStats</span> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">ChildRestartStats is the statistics kept by every parent Actor for every child Actor
+and is used for SupervisorStrategies to know how to deal with problems that occur for the children.</p>
+    </li><li name="akka.actor.ContextualTypedActorFactory" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ContextualTypedActorFactoryextendsTypedActorFactorywithProductwithSerializable"></a>
+      <a id="ContextualTypedActorFactory:ContextualTypedActorFactory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ContextualTypedActorFactory.html"><span class="name">ContextualTypedActorFactory</span></a><span class="params">(<span name="typedActor">typedActor: <a href="TypedActorExtension.html" class="extype" name="akka.actor.TypedActorExtension">TypedActorExtension</a></span>, <span name="actorFactory">actorFactory: <a href="ActorContext.html" class="extype" name="akka.actor.ActorContext">ActorContext</a></span>)</span><span class="result"> extends <a href="TypedActorFactory.html" class="extype" name="akka.actor.TypedActorFactory">TypedActorFactory</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">ContextualTypedActorFactory allows TypedActors to create children, effectively forming the same Actor Supervision Hierarchies
+as normal Actors can.</p>
+    </li><li name="akka.actor.DeadLetter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DeadLetterextendsAllDeadLetterswithProductwithSerializable"></a>
+      <a id="DeadLetter:DeadLetter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="DeadLetter.html"><span class="name">DeadLetter</span></a><span class="params">(<span name="message">message: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></span>, <span name="sender">sender: <a href="ActorRef.html" class="extype" name="akka.actor.ActorRef">ActorRef</a></span>, <span name="recipient">recipient: <a href="ActorRef.html" class="extype" name="akka.actor.ActorRef">ActorRef</a></span>)</span><span class="result"> extends <a href="AllDeadLetters.html" class="extype" name="akka.actor.AllDeadLetters">AllDeadLetters</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">When a message is sent to an Actor that is terminated before receiving the message, it will be sent as a DeadLetter
+to the ActorSystem's EventStream
+</p>
+    </li><li name="akka.actor.DeadLetterSuppression" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="DeadLetterSuppressionextendsAnyRef"></a>
+      <a id="DeadLetterSuppression:DeadLetterSuppression"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="DeadLetterSuppression.html"><span class="name">DeadLetterSuppression</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Use with caution: Messages extending this trait will not be sent to dead-letters.</p>
+    </li><li name="akka.actor.DeathPactException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DeathPactExceptionextendsAkkaExceptionwithNoStackTracewithProductwithSerializable"></a>
+      <a id="DeathPactException:DeathPactException"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="DeathPactException.html"><span class="name">DeathPactException</span></a><span class="result"> extends <a href="../AkkaException.html" class="extype" name="akka.AkkaException">AkkaException</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.util.control.NoStackTrace" class="extype" target="_top">NoStackTrace</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A DeathPactException is thrown by an Actor that receives a Terminated(someActor) message
+that it doesn't handle itself, effectively crashing the Actor and escalating to the supervisor.</p>
+    </li><li name="akka.actor.DefaultSupervisorStrategy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DefaultSupervisorStrategyextendsSupervisorStrategyConfigurator"></a>
+      <a id="DefaultSupervisorStrategy:DefaultSupervisorStrategy"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultSupervisorStrategy.html"><span class="name">DefaultSupervisorStrategy</span></a><span class="result"> extends <a href="SupervisorStrategyConfigurator.html" class="extype" name="akka.actor.SupervisorStrategyConfigurator">SupervisorStrategyConfigurator</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.Deploy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DeployextendsProductwithSerializable"></a>
+      <a id="Deploy:Deploy"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Deploy.html"><span class="name">Deploy</span></a><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;&quot;</span></span>, <span name="config">config: <span class="extype" name="com.typesafe.config.Config">Config</span> = <span class="defval" name="com.typesafe.config.ConfigFactory.empty()">...</span></span>, <span name="routerConfig">routerConfig: <a href="../routing/RouterConfig.html" class="extype" name="akka.routing.RouterConfig">RouterConfig</a> = <span class="symbol">akka.routing.NoRouter</span></span>, <span name="scope">scope: <a href="Scope.html" class="extype" name="akka.actor.Scope">Scope</a> = <span class="symbol">NoScopeGiven</span></span>, <span name="dispatcher">dispatcher: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">Deploy.NoDispatcherGiven</span></span>, <span name="mailbox">mailbox: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">Deploy.NoMailboxGiven</span></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">This class represents deployment configuration for a given actor path.</p>
+    </li><li name="akka.actor.DiagnosticActorLogging" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="DiagnosticActorLoggingextendsActor"></a>
+      <a id="DiagnosticActorLogging:DiagnosticActorLogging"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="DiagnosticActorLogging.html"><span class="name">DiagnosticActorLogging</span></a><span class="result"> extends <a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Scala API: Mix in DiagnosticActorLogging into your Actor to easily obtain a reference to a logger with MDC support,
+which is available under the name &quot;log&quot;.</p>
+    </li><li name="akka.actor.DynamicAccess" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="DynamicAccessextendsAnyRef"></a>
+      <a id="DynamicAccess:DynamicAccess"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DynamicAccess.html"><span class="name">DynamicAccess</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">The DynamicAccess implementation is the class which is used for
+loading all configurable parts of an actor system (the
+<a href="ReflectiveDynamicAccess.html" class="extype" name="akka.actor.ReflectiveDynamicAccess">akka.actor.ReflectiveDynamicAccess</a> is the default implementation).</p>
+    </li><li name="akka.actor.ExtendedActorSystem" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ExtendedActorSystemextendsActorSystem"></a>
+      <a id="ExtendedActorSystem:ExtendedActorSystem"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ExtendedActorSystem.html"><span class="name">ExtendedActorSystem</span></a><span class="result"> extends <a href="ActorSystem.html" class="extype" name="akka.actor.ActorSystem">ActorSystem</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">More powerful interface to the actor system’s implementation which is presented to extensions (see <a href="Extension.html" class="extype" name="akka.actor.Extension">akka.actor.Extension</a>).</p>
+    </li><li name="akka.actor.Extension" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ExtensionextendsAnyRef"></a>
+      <a id="Extension:Extension"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Extension.html"><span class="name">Extension</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">The basic ActorSystem covers all that is needed for locally running actors,
+using futures and so on.</p>
+    </li><li name="akka.actor.ExtensionId" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ExtensionId[T&lt;:akka.actor.Extension]extendsAnyRef"></a>
+      <a id="ExtensionId[T&lt;:Extension]:ExtensionId[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ExtensionId.html"><span class="name">ExtensionId</span></a><span class="tparams">[<span name="T">T &lt;: <a href="Extension.html" class="extype" name="akka.actor.Extension">Extension</a></span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Identifies an Extension
+Lookup of Extensions is done by object identity, so the Id must be the same wherever it's used,
+otherwise you'll get the same extension loaded multiple times.</p>
+    </li><li name="akka.actor.ExtensionIdProvider" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ExtensionIdProviderextendsAnyRef"></a>
+      <a id="ExtensionIdProvider:ExtensionIdProvider"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ExtensionIdProvider.html"><span class="name">ExtensionIdProvider</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">To be able to load an ExtensionId from the configuration,
+a class that implements ExtensionIdProvider must be specified.</p>
+    </li><li name="akka.actor.ExtensionKey" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ExtensionKey[T&lt;:akka.actor.Extension]extendsExtensionId[T]withExtensionIdProvider"></a>
+      <a id="ExtensionKey[T&lt;:Extension]:ExtensionKey[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ExtensionKey.html"><span class="name">ExtensionKey</span></a><span class="tparams">[<span name="T">T &lt;: <a href="Extension.html" class="extype" name="akka.actor.Extension">Extension</a></span>]</span><span class="result"> extends <a href="ExtensionId.html" class="extype" name="akka.actor.ExtensionId">ExtensionId</a>[<span class="extype" name="akka.actor.ExtensionKey.T">T</span>] with <a href="ExtensionIdProvider.html" class="extype" name="akka.actor.ExtensionIdProvider">ExtensionIdProvider</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">This is a one-stop-shop if all you want is an extension which is
+constructed with the ExtendedActorSystem as its only constructor argument:</p>
+    </li><li name="akka.actor.FSM" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="FSM[S,D]extendsActorwithListenerswithActorLogging"></a>
+      <a id="FSM[S,D]:FSM[S,D]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="FSM.html"><span class="name">FSM</span></a><span class="tparams">[<span name="S">S</span>, <span name="D">D</span>]</span><span class="result"> extends <a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a> with <a href="../routing/Listeners.html" class="extype" name="akka.routing.Listeners">Listeners</a> with <a href="ActorLogging.html" class="extype" name="akka.actor.ActorLogging">ActorLogging</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Finite State Machine actor trait.</p>
+    </li><li name="akka.actor.Identify" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="IdentifyextendsAutoReceivedMessagewithProductwithSerializable"></a>
+      <a id="Identify:Identify"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Identify.html"><span class="name">Identify</span></a><span class="params">(<span name="messageId">messageId: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result"> extends <span class="extype" name="akka.actor.AutoReceivedMessage">AutoReceivedMessage</span> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A message all Actors will understand, that when processed will reply with
+<a href="ActorIdentity.html" class="extype" name="akka.actor.ActorIdentity">akka.actor.ActorIdentity</a> containing the <code>ActorRef</code>.</p>
+    </li><li name="akka.actor.IllegalActorStateException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="IllegalActorStateExceptionextendsAkkaExceptionwithProductwithSerializable"></a>
+      <a id="IllegalActorStateException:IllegalActorStateException"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="IllegalActorStateException.html"><span class="name">IllegalActorStateException</span></a><span class="result"> extends <a href="../AkkaException.html" class="extype" name="akka.AkkaException">AkkaException</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">IllegalActorStateException is thrown when a core invariant in the Actor implementation has been violated.</p>
+    </li><li name="akka.actor.Inbox" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="InboxextendsAnyRef"></a>
+      <a id="Inbox:Inbox"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Inbox.html"><span class="name">Inbox</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An Inbox is an actor-like object which is interrogated from the outside.</p>
+    </li><li name="akka.actor.IndirectActorProducer" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="IndirectActorProducerextendsAnyRef"></a>
+      <a id="IndirectActorProducer:IndirectActorProducer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="IndirectActorProducer.html"><span class="name">IndirectActorProducer</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">This interface defines a class of actor creation strategies deviating from
+the usual default of just reflectively instantiating the <a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a>
+subclass.</p>
+    </li><li name="akka.actor.InvalidActorNameException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="InvalidActorNameExceptionextendsAkkaExceptionwithProductwithSerializable"></a>
+      <a id="InvalidActorNameException:InvalidActorNameException"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="InvalidActorNameException.html"><span class="name">InvalidActorNameException</span></a><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <a href="../AkkaException.html" class="extype" name="akka.AkkaException">AkkaException</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An InvalidActorNameException is thrown when you try to convert something, usually a String, to an Actor name
+which doesn't validate.</p>
+    </li><li name="akka.actor.InvalidMessageException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="InvalidMessageExceptionextendsAkkaExceptionwithProductwithSerializable"></a>
+      <a id="InvalidMessageException:InvalidMessageException"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="InvalidMessageException.html"><span class="name">InvalidMessageException</span></a><span class="result"> extends <a href="../AkkaException.html" class="extype" name="akka.AkkaException">AkkaException</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">InvalidMessageException is thrown when an invalid message is sent to an Actor;
+Currently only <code>null</code> is an invalid message.</p>
+    </li><li name="akka.actor.Kill" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="KillextendsAutoReceivedMessagewithPossiblyHarmful"></a>
+      <a id="Kill:Kill"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Kill.html"><span class="name">Kill</span></a><span class="result"> extends <span class="extype" name="akka.actor.AutoReceivedMessage">AutoReceivedMessage</span> with <a href="PossiblyHarmful.html" class="extype" name="akka.actor.PossiblyHarmful">PossiblyHarmful</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.LightArrayRevolverScheduler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LightArrayRevolverSchedulerextendsSchedulerwithCloseable"></a>
+      <a id="LightArrayRevolverScheduler:LightArrayRevolverScheduler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="LightArrayRevolverScheduler.html"><span class="name">LightArrayRevolverScheduler</span></a><span class="result"> extends <a href="Scheduler.html" class="extype" name="akka.actor.Scheduler">Scheduler</a> with <span class="extype" name="java.io.Closeable">Closeable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">This scheduler implementation is based on a revolving wheel of buckets,
+like Netty’s HashedWheelTimer, which it advances at a fixed tick rate and
+dispatches tasks it finds in the current bucket to their respective
+ExecutionContexts.</p>
+    </li><li name="akka.actor.LocalScope" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="LocalScopeextendsScope"></a>
+      <a id="LocalScope:LocalScope"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="LocalScope.html"><span class="name">LocalScope</span></a><span class="result"> extends <a href="Scope.html" class="extype" name="akka.actor.Scope">Scope</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@SerialVersionUID</span><span class="args">(<span>
+      
+      <span class="symbol">1L</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="akka.actor.LoggingFSM" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LoggingFSM[S,D]extendsFSM[S,D]"></a>
+      <a id="LoggingFSM[S,D]:LoggingFSM[S,D]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="LoggingFSM.html"><span class="name">LoggingFSM</span></a><span class="tparams">[<span name="S">S</span>, <span name="D">D</span>]</span><span class="result"> extends <a href="FSM.html" class="extype" name="akka.actor.FSM">FSM</a>[<span class="extype" name="akka.actor.LoggingFSM.S">S</span>, <span class="extype" name="akka.actor.LoggingFSM.D">D</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Stackable trait for <a href="FSM.html" class="extype" name="akka.actor.FSM">akka.actor.FSM</a> which adds a rolling event log and
+debug logging capabilities (analogous to <a href="../event/LoggingReceive.html" class="extype" name="akka.event.LoggingReceive">akka.event.LoggingReceive</a>).</p>
+    </li><li name="akka.actor.NoScopeGiven" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="NoScopeGivenextendsScope"></a>
+      <a id="NoScopeGiven:NoScopeGiven"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="NoScopeGiven.html"><span class="name">NoScopeGiven</span></a><span class="result"> extends <a href="Scope.html" class="extype" name="akka.actor.Scope">Scope</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">This is the default value and as such allows overrides.</p>
+    </li><li name="akka.actor.NoSerializationVerificationNeeded" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="NoSerializationVerificationNeededextendsAnyRef"></a>
+      <a id="NoSerializationVerificationNeeded:NoSerializationVerificationNeeded"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="NoSerializationVerificationNeeded.html"><span class="name">NoSerializationVerificationNeeded</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Marker trait to signal that this class should not be verified for serializability.</p>
+    </li><li name="akka.actor.OneForOneStrategy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="OneForOneStrategyextendsSupervisorStrategywithProductwithSerializable"></a>
+      <a id="OneForOneStrategy:OneForOneStrategy"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="OneForOneStrategy.html"><span class="name">OneForOneStrategy</span></a><span class="params">(<span name="maxNrOfRetries">maxNrOfRetries: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Int" class="extype" target="_top">Int</a> = <span class="symbol">-1</span></span>, <span name="withinTimeRange">withinTimeRange: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.concurrent.duration.Duration" class="extype" target="_top">Duration</a> = <span class="defval" name="scala.concurrent.duration.Duration.Inf">...</span></span>, <span name="loggingEnabled">loggingEnabled: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Boolean" class="extype" target="_top">Boolean</a> = <span class="symbol">true</span></span>)</span><span class="params">(<span name="decider">decider: <a href="SupervisorStrategy$.html#Decider=PartialFunction[Throwable,akka.actor.SupervisorStrategy.Directive]" class="extmbr" name="akka.actor.SupervisorStrategy.Decider">Decider</a></span>)</span><span class="result"> extends <a href="SupervisorStrategy.html" class="extype" name="akka.actor.SupervisorStrategy">SupervisorStrategy</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Applies the fault handling <code>Directive</code> (Resume, Restart, Stop) specified in the <code>Decider</code>
+to the child actor that failed, as opposed to <a href="AllForOneStrategy.html" class="extype" name="akka.actor.AllForOneStrategy">akka.actor.AllForOneStrategy</a> that applies
+it to all children.</p>
+    </li><li name="akka.actor.PoisonPill" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="PoisonPillextendsAutoReceivedMessagewithPossiblyHarmfulwithDeadLetterSuppression"></a>
+      <a id="PoisonPill:PoisonPill"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="PoisonPill.html"><span class="name">PoisonPill</span></a><span class="result"> extends <span class="extype" name="akka.actor.AutoReceivedMessage">AutoReceivedMessage</span> with <a href="PossiblyHarmful.html" class="extype" name="akka.actor.PossiblyHarmful">PossiblyHarmful</a> with <a href="DeadLetterSuppression.html" class="extype" name="akka.actor.DeadLetterSuppression">DeadLetterSuppression</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.PossiblyHarmful" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="PossiblyHarmfulextendsAnyRef"></a>
+      <a id="PossiblyHarmful:PossiblyHarmful"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="PossiblyHarmful.html"><span class="name">PossiblyHarmful</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Marker trait to indicate that a message might be potentially harmful,
+this is used to block messages coming in over remoting.</p>
+    </li><li name="akka.actor.PostRestartException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PostRestartExceptionextendsActorInitializationExceptionwithProductwithSerializable"></a>
+      <a id="PostRestartException:PostRestartException"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="PostRestartException.html"><span class="name">PostRestartException</span></a><span class="result"> extends <a href="ActorInitializationException.html" class="extype" name="akka.actor.ActorInitializationException">ActorInitializationException</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A PostRestartException is thrown when constructor or postRestart() method
+fails during a restart attempt.</p>
+    </li><li name="akka.actor.PreRestartException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PreRestartExceptionextendsActorInitializationExceptionwithProductwithSerializable"></a>
+      <a id="PreRestartException:PreRestartException"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="PreRestartException.html"><span class="name">PreRestartException</span></a><span class="result"> extends <a href="ActorInitializationException.html" class="extype" name="akka.actor.ActorInitializationException">ActorInitializationException</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A PreRestartException is thrown when the preRestart() method failed; this
+exception is not propagated to the supervisor, as it originates from the
+already failed instance, hence it is only visible as log entry on the event
+stream.</p>
+    </li><li name="akka.actor.Props" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PropsextendsProductwithSerializable"></a>
+      <a id="Props:Props"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Props.html"><span class="name">Props</span></a><span class="params">(<span name="deploy">deploy: <a href="Deploy.html" class="extype" name="akka.actor.Deploy">Deploy</a></span>, <span name="clazz">clazz: <span class="extype" name="scala.Predef.Class">Class</span>[_]</span>, <span name="args">args: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.collection.immutable.Seq" class="extype" target="_top">Seq</a>[<a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a>]</span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Props is a configuration object using in creating an <a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a>; it is
+immutable, so it is thread-safe and fully shareable.</p>
+    </li><li name="akka.actor.ReceiveTimeout" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ReceiveTimeoutextendsPossiblyHarmful"></a>
+      <a id="ReceiveTimeout:ReceiveTimeout"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ReceiveTimeout.html"><span class="name">ReceiveTimeout</span></a><span class="result"> extends <a href="PossiblyHarmful.html" class="extype" name="akka.actor.PossiblyHarmful">PossiblyHarmful</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.ReflectiveDynamicAccess" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ReflectiveDynamicAccessextendsDynamicAccess"></a>
+      <a id="ReflectiveDynamicAccess:ReflectiveDynamicAccess"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ReflectiveDynamicAccess.html"><span class="name">ReflectiveDynamicAccess</span></a><span class="result"> extends <a href="DynamicAccess.html" class="extype" name="akka.actor.DynamicAccess">DynamicAccess</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">This is the default <a href="DynamicAccess.html" class="extype" name="akka.actor.DynamicAccess">akka.actor.DynamicAccess</a> implementation used by <a href="ExtendedActorSystem.html" class="extype" name="akka.actor.ExtendedActorSystem">akka.actor.ExtendedActorSystem</a>
+unless overridden.</p>
+    </li><li name="akka.actor.RootActorPath" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RootActorPathextendsActorPathwithProductwithSerializable"></a>
+      <a id="RootActorPath:RootActorPath"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="RootActorPath.html"><span class="name">RootActorPath</span></a><span class="params">(<span name="address">address: <a href="Address.html" class="extype" name="akka.actor.Address">Address</a></span>, <span name="name">name: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/&quot;</span></span>)</span><span class="result"> extends <a href="ActorPath.html" class="extype" name="akka.actor.ActorPath">ActorPath</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Root of the hierarchy of ActorPaths.</p>
+    </li><li name="akka.actor.ScalaActorRef" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ScalaActorRefextendsAnyRef"></a>
+      <a id="ScalaActorRef:ScalaActorRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ScalaActorRef.html"><span class="name">ScalaActorRef</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">This trait represents the Scala Actor API
+There are implicit conversions in .</p>
+    </li><li name="akka.actor.ScalaActorSelection" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ScalaActorSelectionextendsAnyRef"></a>
+      <a id="ScalaActorSelection:ScalaActorSelection"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ScalaActorSelection.html"><span class="name">ScalaActorSelection</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Contains the Scala API (!-method) for ActorSelections) which provides automatic tracking of the sender,
+as per the usual implicit ActorRef pattern.</p>
+    </li><li name="akka.actor.Scheduler" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SchedulerextendsAnyRef"></a>
+      <a id="Scheduler:Scheduler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Scheduler.html"><span class="name">Scheduler</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An Akka scheduler service.</p>
+    </li><li name="akka.actor.Scope" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ScopeextendsAnyRef"></a>
+      <a id="Scope:Scope"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Scope.html"><span class="name">Scope</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">The scope of a <a href="Deploy.html" class="extype" name="akka.actor.Deploy">akka.actor.Deploy</a> serves two purposes: as a marker for
+pattern matching the “scope” (i.</p>
+    </li><li name="akka.actor.Stash" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="StashextendsUnrestrictedStashwithRequiresMessageQueue[akka.dispatch.DequeBasedMessageQueueSemantics]"></a>
+      <a id="Stash:Stash"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Stash.html"><span class="name">Stash</span></a><span class="result"> extends <a href="UnrestrictedStash.html" class="extype" name="akka.actor.UnrestrictedStash">UnrestrictedStash</a> with <a href="../dispatch/RequiresMessageQueue.html" class="extype" name="akka.dispatch.RequiresMessageQueue">RequiresMessageQueue</a>[<a href="../dispatch/DequeBasedMessageQueueSemantics.html" class="extype" name="akka.dispatch.DequeBasedMessageQueueSemantics">DequeBasedMessageQueueSemantics</a>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt"> The <code>Stash</code> trait enables an actor to temporarily stash away messages that can not or
+ should not be handled using the actor's current behavior.</p>
+    </li><li name="akka.actor.StashOverflowException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="StashOverflowExceptionextendsAkkaException"></a>
+      <a id="StashOverflowException:StashOverflowException"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="StashOverflowException.html"><span class="name">StashOverflowException</span></a><span class="result"> extends <a href="../AkkaException.html" class="extype" name="akka.AkkaException">AkkaException</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Is thrown when the size of the Stash exceeds the capacity of the Stash
+</p>
+    </li><li name="akka.actor.StoppingSupervisorStrategy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="StoppingSupervisorStrategyextendsSupervisorStrategyConfigurator"></a>
+      <a id="StoppingSupervisorStrategy:StoppingSupervisorStrategy"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="StoppingSupervisorStrategy.html"><span class="name">StoppingSupervisorStrategy</span></a><span class="result"> extends <a href="SupervisorStrategyConfigurator.html" class="extype" name="akka.actor.SupervisorStrategyConfigurator">SupervisorStrategyConfigurator</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.SupervisorStrategy" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SupervisorStrategyextendsAnyRef"></a>
+      <a id="SupervisorStrategy:SupervisorStrategy"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SupervisorStrategy.html"><span class="name">SupervisorStrategy</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An Akka SupervisorStrategy is the policy to apply for crashing children.</p>
+    </li><li name="akka.actor.SupervisorStrategyConfigurator" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SupervisorStrategyConfiguratorextendsAnyRef"></a>
+      <a id="SupervisorStrategyConfigurator:SupervisorStrategyConfigurator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="SupervisorStrategyConfigurator.html"><span class="name">SupervisorStrategyConfigurator</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Implement this interface in order to configure the supervisorStrategy for
+the top-level guardian actor (<code>/user</code>).</p>
+    </li><li name="akka.actor.SupervisorStrategyLowPriorityImplicits" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SupervisorStrategyLowPriorityImplicitsextendsAnyRef"></a>
+      <a id="SupervisorStrategyLowPriorityImplicits:SupervisorStrategyLowPriorityImplicits"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="SupervisorStrategyLowPriorityImplicits.html"><span class="name">SupervisorStrategyLowPriorityImplicits</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.SuppressedDeadLetter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SuppressedDeadLetterextendsAllDeadLetterswithProductwithSerializable"></a>
+      <a id="SuppressedDeadLetter:SuppressedDeadLetter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="SuppressedDeadLetter.html"><span class="name">SuppressedDeadLetter</span></a><span class="params">(<span name="message">message: <a href="DeadLetterSuppression.html" class="extype" name="akka.actor.DeadLetterSuppression">DeadLetterSuppression</a></span>, <span name="sender">sender: <a href="ActorRef.html" class="extype" name="akka.actor.ActorRef">ActorRef</a></span>, <span name="recipient">recipient: <a href="ActorRef.html" class="extype" name="akka.actor.ActorRef">ActorRef</a></span>)</span><span class="result"> extends <a href="AllDeadLetters.html" class="extype" name="akka.actor.AllDeadLetters">AllDeadLetters</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Similar to <a href="DeadLetter.html" class="extype" name="akka.actor.DeadLetter">DeadLetter</a> with the slight twist of NOT being logged by the default dead letters listener.</p>
+    </li><li name="akka.actor.Terminated" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TerminatedextendsAutoReceivedMessagewithPossiblyHarmfulwithDeadLetterSuppressionwithProductwithSerializable"></a>
+      <a id="Terminated:Terminated"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Terminated.html"><span class="name">Terminated</span></a><span class="result"> extends <span class="extype" name="akka.actor.AutoReceivedMessage">AutoReceivedMessage</span> with <a href="PossiblyHarmful.html" class="extype" name="akka.actor.PossiblyHarmful">PossiblyHarmful</a> with <a href="DeadLetterSuppression.html" class="extype" name="akka.actor.DeadLetterSuppression">DeadLetterSuppression</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">When Death Watch is used, the watcher will receive a Terminated(watched)
+message when watched is terminated.</p>
+    </li><li name="akka.actor.TypedActorExtension" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TypedActorExtensionextendsTypedActorFactorywithExtension"></a>
+      <a id="TypedActorExtension:TypedActorExtension"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="TypedActorExtension.html"><span class="name">TypedActorExtension</span></a><span class="result"> extends <a href="TypedActorFactory.html" class="extype" name="akka.actor.TypedActorFactory">TypedActorFactory</a> with <a href="Extension.html" class="extype" name="akka.actor.Extension">Extension</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.TypedActorFactory" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="TypedActorFactoryextendsAnyRef"></a>
+      <a id="TypedActorFactory:TypedActorFactory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="TypedActorFactory.html"><span class="name">TypedActorFactory</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A TypedActorFactory is something that can created TypedActor instances.</p>
+    </li><li name="akka.actor.TypedProps" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TypedProps[T&lt;:AnyRef]extendsProductwithSerializable"></a>
+      <a id="TypedProps[T&lt;:AnyRef]:TypedProps[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="TypedProps.html"><span class="name">TypedProps</span></a><span class="tparams">[<span name="T">T &lt;: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>]</span><span class="params">(<span name="interfaces">interfaces: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.collection.immutable.Seq" class="extype" target="_top">Seq</a>[<span class="extype" name="scala.Predef.Class">Class</span>[_]]</span>, <span name="creator">creator: () ⇒ <span class="extype" name="akka.actor.TypedProps.T">T</span></span>, <span name="dispatcher">dispatcher: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">TypedProps.defaultDispatcherId</span></span>, <span name="deploy">deploy: <a href="Deploy.html" class="extype" name="akka.actor.Deploy">Deploy</a> = <span class="symbol">Props.defaultDeploy</span></span>, <span name="timeout">timeout: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="../util/Timeout.html" class="extype" name="akka.util.Timeout">Timeout</a>] = <span class="symbol">TypedProps.defaultTimeout</span></span>, <span name="loader">loader: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="java.lang.ClassLoader">ClassLoader</span>] = <span class="symbol">TypedProps.defaultLoader</span></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">TypedProps is a TypedActor configuration object, that is thread safe and fully sharable.</p>
+    </li><li name="akka.actor.UnboundedStash" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="UnboundedStashextendsUnrestrictedStashwithRequiresMessageQueue[akka.dispatch.UnboundedDequeBasedMessageQueueSemantics]"></a>
+      <a id="UnboundedStash:UnboundedStash"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="UnboundedStash.html"><span class="name">UnboundedStash</span></a><span class="result"> extends <a href="UnrestrictedStash.html" class="extype" name="akka.actor.UnrestrictedStash">UnrestrictedStash</a> with <a href="../dispatch/RequiresMessageQueue.html" class="extype" name="akka.dispatch.RequiresMessageQueue">RequiresMessageQueue</a>[<a href="../dispatch/UnboundedDequeBasedMessageQueueSemantics.html" class="extype" name="akka.dispatch.UnboundedDequeBasedMessageQueueSemantics">UnboundedDequeBasedMessageQueueSemantics</a>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">The <code>UnboundedStash</code> trait is a version of <a href="Stash.html" class="extype" name="akka.actor.Stash">akka.actor.Stash</a> that enforces an unbounded stash for you actor.</p>
+    </li><li name="akka.actor.UnhandledMessage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UnhandledMessageextendsProductwithSerializable"></a>
+      <a id="UnhandledMessage:UnhandledMessage"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="UnhandledMessage.html"><span class="name">UnhandledMessage</span></a><span class="params">(<span name="message">message: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></span>, <span name="sender">sender: <a href="ActorRef.html" class="extype" name="akka.actor.ActorRef">ActorRef</a></span>, <span name="recipient">recipient: <a href="ActorRef.html" class="extype" name="akka.actor.ActorRef">ActorRef</a></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">This message is published to the EventStream whenever an Actor receives a message it doesn't understand
+</p>
+    </li><li name="akka.actor.UnrestrictedStash" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="UnrestrictedStashextendsActorwithStashSupport"></a>
+      <a id="UnrestrictedStash:UnrestrictedStash"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="UnrestrictedStash.html"><span class="name">UnrestrictedStash</span></a><span class="result"> extends <a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a> with <span class="extype" name="akka.actor.StashSupport">StashSupport</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A version of <a href="Stash.html" class="extype" name="akka.actor.Stash">akka.actor.Stash</a> that does not enforce any mailbox type.</p>
+    </li><li name="akka.actor.UntypedActor" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="UntypedActorextendsActor"></a>
+      <a id="UntypedActor:UntypedActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="UntypedActor.html"><span class="name">UntypedActor</span></a><span class="result"> extends <a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Actor base trait that should be extended by or mixed to create an Actor with the semantics of the 'Actor Model':
+<a href="http://en.wikipedia.org/wiki/Actor_model">http://en.wikipedia.org/wiki/Actor_model</a></a></p>
+    </li><li name="akka.actor.UntypedActorContext" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="UntypedActorContextextendsActorContext"></a>
+      <a id="UntypedActorContext:UntypedActorContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="UntypedActorContext.html"><span class="name">UntypedActorContext</span></a><span class="result"> extends <a href="ActorContext.html" class="extype" name="akka.actor.ActorContext">ActorContext</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">UntypedActorContext is the UntypedActor equivalent of ActorContext,
+containing the Java API
+</p>
+    </li><li name="akka.actor.UntypedActorWithStash" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="UntypedActorWithStashextendsUntypedActorwithStash"></a>
+      <a id="UntypedActorWithStash:UntypedActorWithStash"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="UntypedActorWithStash.html"><span class="name">UntypedActorWithStash</span></a><span class="result"> extends <a href="UntypedActor.html" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> with <a href="Stash.html" class="extype" name="akka.actor.Stash">Stash</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Actor base class that should be extended to create an actor with a stash.</p>
+    </li><li name="akka.actor.UntypedActorWithUnboundedStash" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="UntypedActorWithUnboundedStashextendsUntypedActorwithUnboundedStash"></a>
+      <a id="UntypedActorWithUnboundedStash:UntypedActorWithUnboundedStash"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="UntypedActorWithUnboundedStash.html"><span class="name">UntypedActorWithUnboundedStash</span></a><span class="result"> extends <a href="UntypedActor.html" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> with <a href="UnboundedStash.html" class="extype" name="akka.actor.UnboundedStash">UnboundedStash</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Actor base class with <code>Stash</code> that enforces an unbounded deque for the actor.</p>
+    </li><li name="akka.actor.UntypedActorWithUnrestrictedStash" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="UntypedActorWithUnrestrictedStashextendsUntypedActorwithUnrestrictedStash"></a>
+      <a id="UntypedActorWithUnrestrictedStash:UntypedActorWithUnrestrictedStash"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="UntypedActorWithUnrestrictedStash.html"><span class="name">UntypedActorWithUnrestrictedStash</span></a><span class="result"> extends <a href="UntypedActor.html" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> with <a href="UnrestrictedStash.html" class="extype" name="akka.actor.UnrestrictedStash">UnrestrictedStash</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Actor base class with <code>Stash</code> that does not enforce any mailbox type.</p>
+    </li><li name="akka.actor.UntypedActorFactory" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="UntypedActorFactoryextendsCreator[akka.actor.Actor]withSerializable"></a>
+      <a id="UntypedActorFactory:UntypedActorFactory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="UntypedActorFactory.html"><span class="name deprecated" title="Deprecated: (Since version 2.2) use Creator&lt;T&gt; instead">UntypedActorFactory</span></a><span class="result"> extends <a href="../japi/Creator.html" class="extype" name="akka.japi.Creator">Creator</a>[<a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a>] with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Factory closure for an UntypedActor, to be used with 'Actors.</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="akka.actor.AbstractActor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AbstractActor"></a>
+      <a id="AbstractActor:AbstractActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractActor$.html"><span class="name">AbstractActor</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Java API: compatible with lambda expressions</p>
+    </li><li name="akka.actor.AbstractFSM" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AbstractFSM"></a>
+      <a id="AbstractFSM:AbstractFSM"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractFSM$.html"><span class="name">AbstractFSM</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Java API: compatible with lambda expressions</p>
+    </li><li name="akka.actor.Actor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Actor"></a>
+      <a id="Actor:Actor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Actor$.html"><span class="name">Actor</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.ActorDSL" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ActorDSL"></a>
+      <a id="ActorDSL:ActorDSL"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorDSL$.html"><span class="name">ActorDSL</span></a><span class="result"> extends <a href="dsl/Inbox.html" class="extype" name="akka.actor.dsl.Inbox">actor.dsl.Inbox</a> with <a href="dsl/Creators.html" class="extype" name="akka.actor.dsl.Creators">Creators</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">This object contains elements which make writing actors and related code
+more concise, e.</p>
+    </li><li name="akka.actor.ActorInitializationException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ActorInitializationException"></a>
+      <a id="ActorInitializationException:ActorInitializationException"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorInitializationException$.html"><span class="name">ActorInitializationException</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.ActorPath" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ActorPath"></a>
+      <a id="ActorPath:ActorPath"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorPath$.html"><span class="name">ActorPath</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.ActorPathExtractor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ActorPathExtractor"></a>
+      <a id="ActorPathExtractor:ActorPathExtractor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorPathExtractor$.html"><span class="name">ActorPathExtractor</span></a><span class="result"> extends <span class="extype" name="akka.actor.PathUtils">PathUtils</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Given an ActorPath it returns the Address and the path elements if the path is well-formed
+</p>
+    </li><li name="akka.actor.ActorRef" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ActorRef"></a>
+      <a id="ActorRef:ActorRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorRef$.html"><span class="name">ActorRef</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.ActorSelection" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ActorSelection"></a>
+      <a id="ActorSelection:ActorSelection"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorSelection$.html"><span class="name">ActorSelection</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An ActorSelection is a logical view of a section of an ActorSystem's tree of Actors,
+allowing for broadcasting of messages to that section.</p>
+    </li><li name="akka.actor.ActorSystem" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ActorSystem"></a>
+      <a id="ActorSystem:ActorSystem"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorSystem$.html"><span class="name">ActorSystem</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.Address" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Address"></a>
+      <a id="Address:Address"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Address$.html"><span class="name">Address</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.AddressFromURIString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AddressFromURIString"></a>
+      <a id="AddressFromURIString:AddressFromURIString"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="AddressFromURIString$.html"><span class="name">AddressFromURIString</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">This object serves as extractor for Scala and as address parser for Java.</p>
+    </li><li name="akka.actor.Deploy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Deploy"></a>
+      <a id="Deploy:Deploy"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Deploy$.html"><span class="name">Deploy</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.FSM" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FSM"></a>
+      <a id="FSM:FSM"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="FSM$.html"><span class="name">FSM</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.Inbox" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Inbox"></a>
+      <a id="Inbox:Inbox"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Inbox$.html"><span class="name">Inbox</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.Kill" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Kill"></a>
+      <a id="Kill:Kill"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Kill$.html"><span class="name">Kill</span></a><span class="result"> extends <a href="Kill.html" class="extype" name="akka.actor.Kill">Kill</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A message all Actors will understand, that when processed will make the Actor throw an ActorKilledException,
+which will trigger supervision.</p>
+    </li><li name="akka.actor.LightArrayRevolverScheduler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LightArrayRevolverScheduler"></a>
+      <a id="LightArrayRevolverScheduler:LightArrayRevolverScheduler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="LightArrayRevolverScheduler$.html"><span class="name">LightArrayRevolverScheduler</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.LocalScope" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LocalScope"></a>
+      <a id="LocalScope:LocalScope"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="LocalScope$.html"><span class="name">LocalScope</span></a><span class="result"> extends <a href="LocalScope.html" class="extype" name="akka.actor.LocalScope">LocalScope</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">The Local Scope is the default one, which is assumed on all deployments
+which do not set a different scope.</p>
+    </li><li name="akka.actor.NoScopeGiven" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NoScopeGiven"></a>
+      <a id="NoScopeGiven:NoScopeGiven"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="NoScopeGiven$.html"><span class="name">NoScopeGiven</span></a><span class="result"> extends <a href="NoScopeGiven.html" class="extype" name="akka.actor.NoScopeGiven">NoScopeGiven</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@SerialVersionUID</span><span class="args">(<span>
+      
+      <span class="symbol">1L</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="akka.actor.OriginalRestartException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="OriginalRestartException"></a>
+      <a id="OriginalRestartException:OriginalRestartException"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="OriginalRestartException$.html"><span class="name">OriginalRestartException</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">This is an extractor for retrieving the original cause (i.</p>
+    </li><li name="akka.actor.PoisonPill" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PoisonPill"></a>
+      <a id="PoisonPill:PoisonPill"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="PoisonPill$.html"><span class="name">PoisonPill</span></a><span class="result"> extends <a href="PoisonPill.html" class="extype" name="akka.actor.PoisonPill">PoisonPill</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A message all Actors will understand, that when processed will terminate the Actor permanently.</p>
+    </li><li name="akka.actor.Props" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Props"></a>
+      <a id="Props:Props"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Props$.html"><span class="name">Props</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Factory for Props instances.</p>
+    </li><li name="akka.actor.ReceiveTimeout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ReceiveTimeout"></a>
+      <a id="ReceiveTimeout:ReceiveTimeout"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ReceiveTimeout$.html"><span class="name">ReceiveTimeout</span></a><span class="result"> extends <a href="ReceiveTimeout.html" class="extype" name="akka.actor.ReceiveTimeout">ReceiveTimeout</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">When using ActorContext.</p>
+    </li><li name="akka.actor.RelativeActorPath" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RelativeActorPath"></a>
+      <a id="RelativeActorPath:RelativeActorPath"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="RelativeActorPath$.html"><span class="name">RelativeActorPath</span></a><span class="result"> extends <span class="extype" name="akka.actor.PathUtils">PathUtils</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Extractor for so-called “relative actor paths” as in “relative URI”, not in
+“relative to some actor”.</p>
+    </li><li name="akka.actor.Status" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Status"></a>
+      <a id="Status:Status"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Status$.html"><span class="name">Status</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Classes for passing status back to the sender.</p>
+    </li><li name="akka.actor.SupervisorStrategy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SupervisorStrategy"></a>
+      <a id="SupervisorStrategy:SupervisorStrategy"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SupervisorStrategy$.html"><span class="name">SupervisorStrategy</span></a><span class="result"> extends <a href="SupervisorStrategyLowPriorityImplicits.html" class="extype" name="akka.actor.SupervisorStrategyLowPriorityImplicits">SupervisorStrategyLowPriorityImplicits</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.TypedActor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TypedActor"></a>
+      <a id="TypedActor:TypedActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="TypedActor$.html"><span class="name">TypedActor</span></a><span class="result"> extends <a href="ExtensionId.html" class="extype" name="akka.actor.ExtensionId">ExtensionId</a>[<a href="TypedActorExtension.html" class="extype" name="akka.actor.TypedActorExtension">TypedActorExtension</a>] with <a href="ExtensionIdProvider.html" class="extype" name="akka.actor.ExtensionIdProvider">ExtensionIdProvider</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">This represents the TypedActor Akka Extension, access to the functionality is done through a given ActorSystem.</p>
+    </li><li name="akka.actor.TypedProps" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TypedProps"></a>
+      <a id="TypedProps:TypedProps"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="TypedProps$.html"><span class="name">TypedProps</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">TypedProps is a TypedActor configuration object, that is thread safe and fully sharable.</p>
+    </li><li name="akka.actor.package#actorRef2Scala" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="actorRef2Scala(ref:akka.actor.ActorRef):akka.actor.ScalaActorRef"></a>
+      <a id="actorRef2Scala(ActorRef):ScalaActorRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">actorRef2Scala</span><span class="params">(<span name="ref">ref: <a href="ActorRef.html" class="extype" name="akka.actor.ActorRef">ActorRef</a></span>)</span><span class="result">: <a href="ScalaActorRef.html" class="extype" name="akka.actor.ScalaActorRef">ScalaActorRef</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.dsl" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="dsl"></a>
+      <a id="dsl:dsl"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="dsl/package.html"><span class="name">dsl</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.mailbox" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="mailbox"></a>
+      <a id="mailbox:mailbox"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="mailbox/package.html"><span class="name">mailbox</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="akka.actor.package#scala2ActorRef" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="scala2ActorRef(ref:akka.actor.ScalaActorRef):akka.actor.ActorRef"></a>
+      <a id="scala2ActorRef(ScalaActorRef):ActorRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">scala2ActorRef</span><span class="params">(<span name="ref">ref: <a href="ScalaActorRef.html" class="extype" name="akka.actor.ScalaActorRef">ScalaActorRef</a></span>)</span><span class="result">: <a href="ActorRef.html" class="extype" name="akka.actor.ActorRef">ActorRef</a></span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../lib/template.js"></script><script defer="defer" type="text/javascript" id="modernizr-custom-js" src="../../lib/modernizr.custom.js"></script><script defer="defer" type="text/javascript" id="diagrams-js" src="../../lib/diagrams.js"></script>
+    </body>
+      </html>

@@ -1,0 +1,1104 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>UntypedActor - akka.actor.UntypedActor</title>
+          <meta name="description" content="UntypedActor - akka.actor.UntypedActor" />
+          <meta name="keywords" content="UntypedActor akka.actor.UntypedActor" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../index.html';
+            var hash = 'akka.actor.UntypedActor';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="type">
+      <div id="definition">
+        <img src="../../lib/class_big.png" />
+        <p id="owner"><a href="../package.html" class="extype" name="akka">akka</a>.<a href="package.html" class="extype" name="akka.actor">actor</a></p>
+        <h1>UntypedActor</h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">UntypedActor</span><span class="result"> extends <a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Actor base trait that should be extended by or mixed to create an Actor with the semantics of the 'Actor Model':
+<a href="http://en.wikipedia.org/wiki/Actor_model">http://en.wikipedia.org/wiki/Actor_model</a></p><p>This class is the Java cousin to the <a href="Actor.html" class="extype" name="akka.actor.Actor">akka.actor.Actor</a> Scala interface.
+Subclass this abstract class to create a MDB-style untyped actor.</p><p>An actor has a well-defined (non-cyclic) life-cycle.</p><ul><li><i>RUNNING</i> (created and started actor) - can receive messages</li><li><i>SHUTDOWN</i> (when 'stop' or 'exit' is invoked) - can't do anything</li></ul><p>The Actor's own <a href="ActorRef.html" class="extype" name="akka.actor.ActorRef">akka.actor.ActorRef</a> is available as <code>getSelf()</code>, the current
+message’s sender as <code>getSender()</code> and the <a href="UntypedActorContext.html" class="extype" name="akka.actor.UntypedActorContext">akka.actor.UntypedActorContext</a> as
+<code>getContext()</code>. The only abstract method is <code>onReceive()</code> which is invoked for
+each processed message unless dynamically overridden using <code>getContext().become()</code>.</p><p>Here is an example on how to create and use an UntypedActor:</p><pre>public <span class="kw">class</span> SampleUntypedActor <span class="kw">extends</span> UntypedActor {
+
+ public static <span class="kw">class</span> Reply implements java.io.Serializable {
+   <span class="kw">final</span> public ActorRef sender;
+   <span class="kw">final</span> public Result result;
+   Reply(ActorRef sender, Result result) {
+     <span class="kw">this</span>.sender = sender;
+     <span class="kw">this</span>.result = result;
+   }
+ }
+
+<span class="kw">private</span> static SupervisorStrategy strategy = <span class="kw">new</span> OneForOneStrategy(<span class="num">10</span>, Duration.create(<span class="lit">"1 minute"</span>),
+  <span class="kw">new</span> <span class="std">Function</span>&lt;Throwable, Directive&gt;() {
+    @Override
+    public Directive apply(Throwable t) {
+      <span class="kw">if</span> (t instanceof ArithmeticException) {
+        <span class="kw">return</span> resume();
+      } <span class="kw">else</span> <span class="kw">if</span> (t instanceof NullPointerException) {
+        <span class="kw">return</span> restart();
+      } <span class="kw">else</span> <span class="kw">if</span> (t instanceof IllegalArgumentException) {
+        <span class="kw">return</span> stop();
+      } <span class="kw">else</span> {
+        <span class="kw">return</span> escalate();
+      }
+    }
+  });
+
+@Override
+public SupervisorStrategy supervisorStrategy() {
+  <span class="kw">return</span> strategy;
+ }
+
+ public void onReceive(<span class="std">Object</span> message) throws Exception {
+   <span class="kw">if</span> (message instanceof <span class="std">String</span>) {
+     <span class="std">String</span> msg = (<span class="std">String</span>) message;
+
+     <span class="kw">if</span> (msg.equals(<span class="lit">"UseSender"</span>)) {
+       <span class="cmt">// Reply to original sender of message</span>
+       getSender().tell(msg, getSelf());
+
+     } <span class="kw">else</span> <span class="kw">if</span> (msg.equals(<span class="lit">"SendToSelf"</span>)) {
+       <span class="cmt">// Send message to the actor itself recursively</span>
+       getSelf().tell(<span class="lit">"SomeOtherMessage"</span>, getSelf());
+
+     } <span class="kw">else</span> <span class="kw">if</span> (msg.equals(<span class="lit">"ErrorKernelWithDirectReply"</span>)) {
+       <span class="cmt">// Send work to one-off child which will reply directly to original sender</span>
+       getContext().actorOf(Props.create(Worker.<span class="kw">class</span>)).tell(<span class="lit">"DoSomeDangerousWork"</span>, getSender());
+
+     } <span class="kw">else</span> <span class="kw">if</span> (msg.equals(<span class="lit">"ErrorKernelWithReplyHere"</span>)) {
+       <span class="cmt">// Send work to one-off child and collect the answer, reply handled further down</span>
+       getContext().actorOf(Props.create(Worker.<span class="kw">class</span>)).tell(<span class="lit">"DoWorkAndReplyToMe"</span>, getSelf());
+
+     } <span class="kw">else</span> {
+       unhandled(message);
+     }
+
+   } <span class="kw">else</span> <span class="kw">if</span> (message instanceof Reply) {
+
+     <span class="kw">final</span> Reply reply = (Reply) message;
+     <span class="cmt">// might want to do some processing/book-keeping here</span>
+     reply.sender.tell(reply.result, getSelf());
+
+   } <span class="kw">else</span> {
+     unhandled(message);
+   }
+ }
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="http://github.com/akka/akka/tree/v2.3.15//akka-actor/src/main/scala/akka/actor/UntypedActor.scala" target="_blank">UntypedActor.scala</a></dd></dl><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a>, <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></div>
+        </div><div class="toggleContainer block">
+          <span class="toggle">Known Subclasses</span>
+          <div class="subClasses hiddenContent"><a href="UntypedActorWithStash.html" class="extype" name="akka.actor.UntypedActorWithStash">UntypedActorWithStash</a>, <a href="UntypedActorWithUnboundedStash.html" class="extype" name="akka.actor.UntypedActorWithUnboundedStash">UntypedActorWithUnboundedStash</a>, <a href="UntypedActorWithUnrestrictedStash.html" class="extype" name="akka.actor.UntypedActorWithUnrestrictedStash">UntypedActorWithUnrestrictedStash</a>, <a href="../camel/javaapi/UntypedConsumerActor.html" class="extype" name="akka.camel.javaapi.UntypedConsumerActor">UntypedConsumerActor</a>, <a href="../persistence/UntypedEventsourcedProcessor.html" class="extype" name="akka.persistence.UntypedEventsourcedProcessor">UntypedEventsourcedProcessor</a>, <a href="../persistence/UntypedPersistentActor.html" class="extype" name="akka.persistence.UntypedPersistentActor">UntypedPersistentActor</a>, <a href="../persistence/UntypedPersistentActorWithAtLeastOnceDelivery.html" class="extype" name="akka.persistence.UntypedPersistentActorWithAtLeastOnceDelivery">UntypedPersistentActorWithAtLeastOnceDelivery</a>, <a href="../persistence/UntypedPersistentView.html" class="extype" name="akka.persistence.UntypedPersistentView">UntypedPersistentView</a>, <a href="../persistence/UntypedProcessor.html" class="extype" name="akka.persistence.UntypedProcessor">UntypedProcessor</a>, <a href="../camel/javaapi/UntypedProducerActor.html" class="extype" name="akka.camel.javaapi.UntypedProducerActor">UntypedProducerActor</a>, <a href="../transactor/UntypedTransactor.html" class="extype" name="akka.transactor.UntypedTransactor">UntypedTransactor</a>, <a href="../persistence/UntypedView.html" class="extype" name="akka.persistence.UntypedView">UntypedView</a></div>
+        </div><div class="toggleContainer block diagram-container" id="inheritance-diagram-container">
+                <span class="toggle diagram-link">Type Hierarchy</span>
+                <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#diagrams" target="_blank" class="diagram-help">Learn more about scaladoc diagrams</a>
+                <div class="diagram" id="inheritance-diagram"><svg class="class-diagram" id="graph820" viewBox="0.00 0.00 1659.00 155.00" height="155pt" width="1659pt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g transform="scale(1 1) rotate(0) translate(4 151)" class="graph" id="graph0"><polygon points="-4,4 -4,-151 1655,-151 1655,4 -4,4" stroke="none" fill="white"></polygon><g class="cluster" id="clust1"></g><g class="cluster" id="clust2"></g><!-- node0 --><g class="node this class" id="graph820_0"><g id="a_this class|graph820_0"><a xlink:title="akka.actor.UntypedActor (this class)" xlink:href="#inheritance-diagram"><polygon points="978,-86 874,-86 874,-61 978,-61 978,-86" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-80.5" x="884" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-70.5" x="905" text-anchor="start">UntypedActor</text></a></g></g><!-- node1 --><g class="node class" id="graph820_1"><g id="a_class|graph820_1"><a xlink:title="akka.actor.UntypedActorWithStash" xlink:href="UntypedActorWithStash.html#inheritance-diagram"><polygon points="150,-25 1.42109e-14,-25 1.42109e-14,-0 150,-0 150,-25" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-19.5" x="10" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9.5" x="31" text-anchor="start">UntypedActorWithStash</text></a></g></g><!-- node0&#45;&gt;node1 --><g class="edge inheritance" id="graph820_0_1"><g id="a_inheritance|graph820_0_1"><a xlink:title="UntypedActorWithStash is a subtype of UntypedActor"><path d="M868.611,-70.403C740.879,-65.4166 423.513,-51.2606 159,-25 156.071,-24.7092 153.086,-24.3936 150.073,-24.0589" stroke="#d4d4d4" fill="none"></path><polygon points="868.749,-72.1596 873.813,-70.6051 868.885,-68.6622 868.749,-72.1596" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node2 --><g class="node class" id="graph820_2"><g id="a_class|graph820_2"><a xlink:title="akka.actor.UntypedActorWithUnboundedStash" xlink:href="UntypedActorWithUnboundedStash.html#inheritance-diagram"><polygon points="366,-25 168,-25 168,-0 366,-0 366,-25" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-19.5" x="178" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9.5" x="199" text-anchor="start">UntypedActorWithUnboundedStash</text></a></g></g><!-- node0&#45;&gt;node2 --><g class="edge inheritance" id="graph820_0_2"><g id="a_inheritance|graph820_0_2"><a xlink:title="UntypedActorWithUnboundedStash is a subtype of UntypedActor"><path d="M868.662,-67.9387C768.47,-59.8831 555.038,-42.3439 375,-25 372.091,-24.7197 369.138,-24.4313 366.157,-24.1366" stroke="#d4d4d4" fill="none"></path><polygon points="868.806,-69.7058 873.93,-68.3619 869.086,-66.2171 868.806,-69.7058" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node3 --><g class="node class" id="graph820_3"><g id="a_class|graph820_3"><a xlink:title="akka.actor.UntypedActorWithUnrestrictedStash" xlink:href="UntypedActorWithUnrestrictedStash.html#inheritance-diagram"><polygon points="586,-25 384,-25 384,-0 586,-0 586,-25" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-19.5" x="394" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9.5" x="415" text-anchor="start">UntypedActorWithUnrestrictedStash</text></a></g></g><!-- node0&#45;&gt;node3 --><g class="edge inheritance" id="graph820_0_3"><g id="a_inheritance|graph820_0_3"><a xlink:title="UntypedActorWithUnrestrictedStash is a subtype of UntypedActor"><path d="M868.331,-64.7847C792.637,-54.6578 659.115,-36.7942 571.343,-25.0515" stroke="#d4d4d4" fill="none"></path><polygon points="868.492,-66.5717 873.68,-65.5002 868.956,-63.1026 868.492,-66.5717" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node4 --><g class="node class" id="graph820_4"><g id="a_class|graph820_4"><a xlink:title="akka.camel.javaapi.UntypedConsumerActor" xlink:href="../camel/javaapi/UntypedConsumerActor.html#inheritance-diagram"><polygon points="752,-25 604,-25 604,-0 752,-0 752,-25" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-19.5" x="614" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9.5" x="635" text-anchor="start">UntypedConsumerActor</text></a></g></g><!-- node0&#45;&gt;node4 --><g class="edge inheritance" id="graph820_0_4"><g id="a_inheritance|graph820_0_4"><a xlink:title="UntypedConsumerActor is a subtype of UntypedActor"><path d="M872.664,-59.8112C829.338,-49.5039 768.737,-35.0865 726.707,-25.0875" stroke="#d4d4d4" fill="none"></path><polygon points="872.325,-61.5293 877.594,-60.9841 873.135,-58.1244 872.325,-61.5293" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node5 --><g class="node class" id="graph820_5"><g id="a_class|graph820_5"><a xlink:title="akka.persistence.UntypedPersistentActor" xlink:href="../persistence/UntypedPersistentActor.html#inheritance-diagram"><polygon points="918,-25 770,-25 770,-0 918,-0 918,-25" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-19.5" x="780" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9.5" x="801" text-anchor="start">UntypedPersistentActor</text></a></g></g><!-- node0&#45;&gt;node5 --><g class="edge inheritance" id="graph820_0_5"><g id="a_inheritance|graph820_0_5"><a xlink:title="UntypedPersistentActor is a subtype of UntypedActor"><path d="M905.595,-57.8185C891.564,-47.7228 873.186,-34.4995 860.167,-25.1323" stroke="#d4d4d4" fill="none"></path><polygon points="904.719,-59.3438 909.799,-60.8435 906.763,-56.5027 904.719,-59.3438" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node6 --><g class="node class" id="graph820_6"><g id="a_class|graph820_6"><a xlink:title="akka.persistence.UntypedPersistentView" xlink:href="../persistence/UntypedPersistentView.html#inheritance-diagram"><polygon points="1082,-25 936,-25 936,-0 1082,-0 1082,-25" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-19.5" x="946" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9.5" x="967" text-anchor="start">UntypedPersistentView</text></a></g></g><!-- node0&#45;&gt;node6 --><g class="edge inheritance" id="graph820_0_6"><g id="a_inheritance|graph820_0_6"><a xlink:title="UntypedPersistentView is a subtype of UntypedActor"><path d="M946.654,-57.8185C960.856,-47.7228 979.458,-34.4995 992.636,-25.1323" stroke="#d4d4d4" fill="none"></path><polygon points="945.46,-56.5202 942.398,-60.8435 947.487,-59.3729 945.46,-56.5202" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node7 --><g class="node class" id="graph820_7"><g id="a_class|graph820_7"><a xlink:title="akka.persistence.UntypedProcessor" xlink:href="../persistence/UntypedProcessor.html#inheritance-diagram"><polygon points="1225.5,-25 1100.5,-25 1100.5,-0 1225.5,-0 1225.5,-25" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-19.5" x="1111" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9.5" x="1132" text-anchor="start">UntypedProcessor</text></a></g></g><!-- node0&#45;&gt;node7 --><g class="edge inheritance" id="graph820_0_7"><g id="a_inheritance|graph820_0_7"><a xlink:title="UntypedProcessor is a subtype of UntypedActor"><path d="M977.222,-59.7485C1018.61,-49.4454 1076.37,-35.0662 1116.45,-25.0875" stroke="#d4d4d4" fill="none"></path><polygon points="976.688,-58.078 972.259,-60.9841 977.533,-61.4744 976.688,-58.078" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node8 --><g class="node class" id="graph820_8"><g id="a_class|graph820_8"><a xlink:title="akka.camel.javaapi.UntypedProducerActor" xlink:href="../camel/javaapi/UntypedProducerActor.html#inheritance-diagram"><polygon points="1386.5,-25 1243.5,-25 1243.5,-0 1386.5,-0 1386.5,-25" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-19.5" x="1254" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9.5" x="1275" text-anchor="start">UntypedProducerActor</text></a></g></g><!-- node0&#45;&gt;node8 --><g class="edge inheritance" id="graph820_0_8"><g id="a_inheritance|graph820_0_8"><a xlink:title="UntypedProducerActor is a subtype of UntypedActor"><path d="M983.361,-63.7999C1052.46,-53.3204 1168.55,-35.7118 1243.44,-24.3535" stroke="#d4d4d4" fill="none"></path><polygon points="982.74,-62.1241 978.059,-64.6042 983.265,-65.5846 982.74,-62.1241" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node9 --><g class="node class" id="graph820_9"><g id="a_class|graph820_9"><a xlink:title="akka.transactor.UntypedTransactor" xlink:href="../transactor/UntypedTransactor.html#inheritance-diagram"><polygon points="1531,-25 1405,-25 1405,-0 1531,-0 1531,-25" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-19.5" x="1415" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9.5" x="1436" text-anchor="start">UntypedTransactor</text></a></g></g><!-- node0&#45;&gt;node9 --><g class="edge inheritance" id="graph820_0_9"><g id="a_inheritance|graph820_0_9"><a xlink:title="UntypedTransactor is a subtype of UntypedActor"><path d="M983.472,-67.7672C1072.17,-60.2203 1247.69,-44.3224 1396,-25 1398.89,-24.6239 1401.84,-24.2225 1404.81,-23.8035" stroke="#d4d4d4" fill="none"></path><polygon points="983.11,-66.0415 978.276,-68.2082 983.406,-69.529 983.11,-66.0415" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node10 --><g class="node class" id="graph820_10"><g id="a_class|graph820_10"><a xlink:title="akka.persistence.UntypedView" xlink:href="../persistence/UntypedView.html#inheritance-diagram"><polygon points="1651,-25 1549,-25 1549,-0 1651,-0 1651,-25" stroke="#115f3b" fill="#0a955b"></polygon><image xlink:href="../../lib/class_diagram.png" y="-19.5" x="1559" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-9.5" x="1580" text-anchor="start">UntypedView</text></a></g></g><!-- node0&#45;&gt;node10 --><g class="edge inheritance" id="graph820_0_10"><g id="a_inheritance|graph820_0_10"><a xlink:title="UntypedView is a subtype of UntypedActor"><path d="M983.45,-70.2082C1092.39,-65.3861 1336.33,-52.3087 1540,-25 1542.84,-24.6194 1545.75,-24.1912 1548.67,-23.7296" stroke="#d4d4d4" fill="none"></path><polygon points="983.283,-68.4637 978.365,-70.4316 983.437,-71.9604 983.283,-68.4637" stroke="#d4d4d4" fill="none"></polygon></a></g></g><!-- node11 --><g class="node trait" id="graph820_11"><g id="a_trait|graph820_11"><a xlink:title="akka.actor.Actor" xlink:href="Actor.html#inheritance-diagram"><polygon points="960,-147 892,-147 892,-122 960,-122 960,-147" stroke="#37657d" fill="#498aad"></polygon><image xlink:href="../../lib/trait_diagram.png" y="-141.5" x="902" preserveAspectRatio="xMinYMin meet" height="15px" width="15px"></image><text fill="#ffffff" font-size="10.00" font-family="Arial" y="-131.5" x="923" text-anchor="start">Actor</text></a></g></g><!-- node11&#45;&gt;node0 --><g class="edge inheritance" id="graph820_11_0"><g id="a_inheritance|graph820_11_0"><a xlink:title="UntypedActor is a subtype of Actor"><path d="M926,-116.687C926,-106.917 926,-94.8534 926,-86.1323" stroke="#d4d4d4" fill="none"></path><polygon points="924.25,-116.843 926,-121.843 927.75,-116.844 924.25,-116.843" stroke="#d4d4d4" fill="none"></polygon></a></g></g></g></svg></div>
+              </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="akka.actor.UntypedActor"><span>UntypedActor</span></li><li class="in" name="akka.actor.Actor"><span>Actor</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+                <span class="filtertype">Implicitly<br />
+                </span>
+                <ol id="implicits"> <li class="in" name="scala.Predef.any2stringadd" data-hidden="true"><span>by any2stringadd</span></li><li class="in" name="scala.Predef.any2stringfmt" data-hidden="true"><span>by any2stringfmt</span></li><li class="in" name="scala.Predef.any2ArrowAssoc" data-hidden="true"><span>by any2ArrowAssoc</span></li><li class="in" name="scala.Predef.any2Ensuring" data-hidden="true"><span>by any2Ensuring</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="akka.actor.UntypedActor#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;():akka.actor.UntypedActor"></a>
+      <a id="&lt;init&gt;:UntypedActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">UntypedActor</span><span class="params">()</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="akka.actor.Actor.Receive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Receive=akka.actor.Actor.Receive"></a>
+      <a id="Receive:Receive"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Receive</span><span class="result"> = <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.PartialFunction" class="extype" target="_top">PartialFunction</a>[<a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a>, <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></dd></dl></div>
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Abstract Value Members</h3>
+              <ol><li name="akka.actor.UntypedActor#onReceive" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="onReceive(message:Any):Unit"></a>
+      <a id="onReceive(Any):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onReceive</span><span class="params">(<span name="message">message: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">To be implemented by concrete UntypedActor, this defines the behavior of the
+UntypedActor.</p><div class="fullcomment"><div class="comment cmt"><p>To be implemented by concrete UntypedActor, this defines the behavior of the
+UntypedActor.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[Exception]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Concrete Value Members</h3>
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:AnyRef):Boolean"></a>
+      <a id="!=(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
+      <a id="!=(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <a id="##():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Int" class="extype" target="_top">Int</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.Predef.any2stringadd#+" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="+(other:String):String"></a>
+      <a id="+(String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $plus" class="implicit">+</span><span class="params">(<span name="other">other: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> to
+            <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.runtime.StringAdd" class="extype" target="_top">StringAdd</a> performed by method any2stringadd in scala.Predef.
+            
+          </dd><dt>Definition Classes</dt><dd>StringAdd</dd></dl></div>
+    </li><li name="scala.Predef.any2ArrowAssoc#-&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="-&gt;[B](y:B):(A,B)"></a>
+      <a id="-&gt;[B](B):(UntypedActor,B)"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $minus$greater" class="implicit">-&gt;</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a>, <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span>)</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> to
+            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a>] performed by method any2ArrowAssoc in scala.Predef.
+            
+          </dd><dt>Definition Classes</dt><dd>ArrowAssoc</dd><dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:AnyRef):Boolean"></a>
+      <a id="==(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
+      <a id="==(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="akka.actor.Actor#aroundPostRestart" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="aroundPostRestart(reason:Throwable):Unit"></a>
+      <a id="aroundPostRestart(Throwable):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">aroundPostRestart</span><span class="params">(<span name="reason">reason: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Can be overridden to intercept calls to <code>postRestart</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Can be overridden to intercept calls to <code>postRestart</code>. Calls <code>postRestart</code> by default.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="akka">akka</a>] </dd><dt>Definition Classes</dt><dd><a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></dd></dl></div>
+    </li><li name="akka.actor.Actor#aroundPostStop" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="aroundPostStop():Unit"></a>
+      <a id="aroundPostStop():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">aroundPostStop</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Can be overridden to intercept calls to <code>postStop</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Can be overridden to intercept calls to <code>postStop</code>. Calls <code>postStop</code> by default.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="akka">akka</a>] </dd><dt>Definition Classes</dt><dd><a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></dd></dl></div>
+    </li><li name="akka.actor.Actor#aroundPreRestart" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="aroundPreRestart(reason:Throwable,message:Option[Any]):Unit"></a>
+      <a id="aroundPreRestart(Throwable,Option[Any]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">aroundPreRestart</span><span class="params">(<span name="reason">reason: <span class="extype" name="scala.Throwable">Throwable</span></span>, <span name="message">message: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a>]</span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Can be overridden to intercept calls to <code>preRestart</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Can be overridden to intercept calls to <code>preRestart</code>. Calls <code>preRestart</code> by default.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="akka">akka</a>] </dd><dt>Definition Classes</dt><dd><a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></dd></dl></div>
+    </li><li name="akka.actor.Actor#aroundPreStart" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="aroundPreStart():Unit"></a>
+      <a id="aroundPreStart():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">aroundPreStart</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Can be overridden to intercept calls to <code>preStart</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Can be overridden to intercept calls to <code>preStart</code>. Calls <code>preStart</code> by default.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="akka">akka</a>] </dd><dt>Definition Classes</dt><dd><a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></dd></dl></div>
+    </li><li name="akka.actor.Actor#aroundReceive" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="aroundReceive(receive:akka.actor.Actor.Receive,msg:Any):Unit"></a>
+      <a id="aroundReceive(Actor.Receive,Any):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">aroundReceive</span><span class="params">(<span name="receive">receive: <a href="Actor$.html#Receive=PartialFunction[Any,Unit]" class="extmbr" name="akka.actor.Actor.Receive">Actor.Receive</a></span>, <span name="msg">msg: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">INTERNAL API.</p><div class="fullcomment"><div class="comment cmt"><p>INTERNAL API.</p><p>Can be overridden to intercept calls to this actor's current behavior.
+</p></div><dl class="paramcmts block"><dt class="param">receive</dt><dd class="cmt"><p>current behavior.</p></dd><dt class="param">msg</dt><dd class="cmt"><p>current message.
+</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="akka">akka</a>] </dd><dt>Definition Classes</dt><dd><a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
+      <a id="clone():AnyRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="akka.actor.Actor#context" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="context:akka.actor.ActorContext"></a>
+      <a id="context:ActorContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">context</span><span class="result">: <a href="ActorContext.html" class="extype" name="akka.actor.ActorContext">ActorContext</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Stores the context for this actor, including self, and sender.</p><div class="fullcomment"><div class="comment cmt"><p>Stores the context for this actor, including self, and sender.
+It is implicit to support operations such as <code>forward</code>.</p><p>WARNING: Only valid within the Actor itself, so do not close over it and
+publish it to other threads!</p><p><a href="ActorContext.html" class="extype" name="akka.actor.ActorContext">akka.actor.ActorContext</a> is the Scala API. <code>getContext</code> returns a
+<a href="UntypedActorContext.html" class="extype" name="akka.actor.UntypedActorContext">akka.actor.UntypedActorContext</a>, which is the Java API of the actor
+context.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></dd></dl></div>
+    </li><li name="scala.Predef.any2Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ensuring(cond:A=&gt;Boolean,msg:=&gt;Any):A"></a>
+      <a id="ensuring((UntypedActor)⇒Boolean,⇒Any):UntypedActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a>) ⇒ <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a>] performed by method any2Ensuring in scala.Predef.
+            
+          </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
+    </li><li name="scala.Predef.any2Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ensuring(cond:A=&gt;Boolean):A"></a>
+      <a id="ensuring((UntypedActor)⇒Boolean):UntypedActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a>) ⇒ <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a>] performed by method any2Ensuring in scala.Predef.
+            
+          </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
+    </li><li name="scala.Predef.any2Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ensuring(cond:Boolean,msg:=&gt;Any):A"></a>
+      <a id="ensuring(Boolean,⇒Any):UntypedActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a>] performed by method any2Ensuring in scala.Predef.
+            
+          </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
+    </li><li name="scala.Predef.any2Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ensuring(cond:Boolean):A"></a>
+      <a id="ensuring(Boolean):UntypedActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a>] performed by method any2Ensuring in scala.Predef.
+            
+          </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
+      <a id="eq(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
+      <a id="equals(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.Predef.any2stringfmt#formatted" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="formatted(fmtstr:String):String"></a>
+      <a id="formatted(String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">formatted</span><span class="params">(<span name="fmtstr">fmtstr: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> to
+            <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.runtime.StringFormat" class="extype" target="_top">StringFormat</a> performed by method any2stringfmt in scala.Predef.
+            
+          </dd><dt>Definition Classes</dt><dd>StringFormat</dd><dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <a id="getClass():Class[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="akka.actor.UntypedActor#getContext" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getContext():akka.actor.UntypedActorContext"></a>
+      <a id="getContext():UntypedActorContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getContext</span><span class="params">()</span><span class="result">: <a href="UntypedActorContext.html" class="extype" name="akka.actor.UntypedActorContext">UntypedActorContext</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns this UntypedActor's UntypedActorContext
+The UntypedActorContext is not thread safe so do not expose it outside of the
+UntypedActor.</p>
+    </li><li name="akka.actor.UntypedActor#getSelf" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getSelf():akka.actor.ActorRef"></a>
+      <a id="getSelf():ActorRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getSelf</span><span class="params">()</span><span class="result">: <a href="ActorRef.html" class="extype" name="akka.actor.ActorRef">ActorRef</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns the ActorRef for this actor.</p>
+    </li><li name="akka.actor.UntypedActor#getSender" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getSender():akka.actor.ActorRef"></a>
+      <a id="getSender():ActorRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getSender</span><span class="params">()</span><span class="result">: <a href="ActorRef.html" class="extype" name="akka.actor.ActorRef">ActorRef</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">The reference sender Actor of the currently processed message.</p><div class="fullcomment"><div class="comment cmt"><p>The reference sender Actor of the currently processed message. This is
+always a legal destination to send to, even if there is no logical recipient
+for the reply, in which case it will be sent to the dead letter mailbox.
+</p></div></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <a id="hashCode():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Int" class="extype" target="_top">Int</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
+      <a id="ne(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="akka.actor.UntypedActor#postRestart" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="postRestart(reason:Throwable):Unit"></a>
+      <a id="postRestart(Throwable):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">postRestart</span><span class="params">(<span name="reason">reason: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">User overridable callback: By default it calls <code>preStart()</code>.</p><div class="fullcomment"><div class="comment cmt"><p>User overridable callback: By default it calls <code>preStart()</code>.</p><p>Is called right AFTER restart on the newly created Actor to allow reinitialization after an Actor crash.</p></div><dl class="paramcmts block"><dt class="param">reason</dt><dd class="cmt"><p>the Throwable that caused the restart to happen</p><p>Is called right AFTER restart on the newly created Actor to allow reinitialization after an Actor crash.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> → <a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[Exception]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="akka.actor.UntypedActor#postStop" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="postStop():Unit"></a>
+      <a id="postStop():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">postStop</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">User overridable callback.</p><div class="fullcomment"><div class="comment cmt"><p>User overridable callback.</p><p>Is called asynchronously after 'actor.stop()' is invoked.
+Empty default implementation.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> → <a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[Exception]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="akka.actor.UntypedActor#preRestart" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="preRestart(reason:Throwable,message:Option[Any]):Unit"></a>
+      <a id="preRestart(Throwable,Option[Any]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">preRestart</span><span class="params">(<span name="reason">reason: <span class="extype" name="scala.Throwable">Throwable</span></span>, <span name="message">message: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a>]</span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">User overridable callback: <b>By default it disposes of all children and then calls <code>postStop()</code>.</b></p><div class="fullcomment"><div class="comment cmt"><p>User overridable callback: <b>By default it disposes of all children and then calls <code>postStop()</code>.</b></p><p>Is called on a crashed Actor right BEFORE it is restarted to allow clean
+up of resources before Actor is terminated.</p></div><dl class="paramcmts block"><dt class="param">reason</dt><dd class="cmt"><p>the Throwable that caused the restart to happen
+</p></dd><dt class="param">message</dt><dd class="cmt"><p>optionally the current message the actor processed when failing, if applicable</p><p>Is called on a crashed Actor right BEFORE it is restarted to allow clean
+up of resources before Actor is terminated.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> → <a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[Exception]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="akka.actor.UntypedActor#preStart" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="preStart():Unit"></a>
+      <a id="preStart():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">preStart</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">User overridable callback.</p><div class="fullcomment"><div class="comment cmt"><p>User overridable callback.</p><p>Is called when an Actor is started.
+Actor are automatically started asynchronously when created.
+Empty default implementation.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> → <a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[Exception]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="akka.actor.UntypedActor#receive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="receive:PartialFunction[Any,Unit]"></a>
+      <a id="receive:PartialFunction[Any,Unit]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">receive</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.PartialFunction" class="extype" target="_top">PartialFunction</a>[<a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a>, <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">This defines the initial actor behavior, it must return a partial function
+with the actor logic.</p><div class="fullcomment"><div class="comment cmt"><p>This defines the initial actor behavior, it must return a partial function
+with the actor logic.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> → <a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></dd></dl></div>
+    </li><li name="akka.actor.Actor#self" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="self:akka.actor.ActorRef"></a>
+      <a id="self:ActorRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit final </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">self</span><span class="result">: <a href="ActorRef.html" class="extype" name="akka.actor.ActorRef">ActorRef</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">The 'self' field holds the ActorRef for this actor.</p><div class="fullcomment"><div class="comment cmt"><p>The 'self' field holds the ActorRef for this actor.</p><p>Can be used to send messages to itself:
+<pre>
+self ! message
+</pre>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></dd></dl></div>
+    </li><li name="akka.actor.Actor#sender" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sender():akka.actor.ActorRef"></a>
+      <a id="sender():ActorRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sender</span><span class="params">()</span><span class="result">: <a href="ActorRef.html" class="extype" name="akka.actor.ActorRef">ActorRef</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">The reference sender Actor of the last received message.</p><div class="fullcomment"><div class="comment cmt"><p>The reference sender Actor of the last received message.
+Is defined if the message was sent from another Actor,
+else <code>deadLetters</code> in <a href="ActorSystem.html" class="extype" name="akka.actor.ActorSystem">akka.actor.ActorSystem</a>.</p><p>WARNING: Only valid within the Actor itself, so do not close over it and
+publish it to other threads!
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></dd></dl></div>
+    </li><li name="akka.actor.UntypedActor#supervisorStrategy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="supervisorStrategy:akka.actor.SupervisorStrategy"></a>
+      <a id="supervisorStrategy:SupervisorStrategy"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">supervisorStrategy</span><span class="result">: <a href="SupervisorStrategy.html" class="extype" name="akka.actor.SupervisorStrategy">SupervisorStrategy</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">User overridable definition the strategy to use for supervising
+child actors.</p><div class="fullcomment"><div class="comment cmt"><p>User overridable definition the strategy to use for supervising
+child actors.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> → <a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></dd></dl></div>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
+      <a id="synchronized[T0](⇒T0):T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <a id="toString():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="akka.actor.UntypedActor#unhandled" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="unhandled(message:Any):Unit"></a>
+      <a id="unhandled(Any):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">unhandled</span><span class="params">(<span name="message">message: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Recommended convention is to call this method if the message
+isn't handled in <a href="#onReceive(message:Any):Unit" class="extmbr" name="akka.actor.UntypedActor#onReceive">#onReceive</a> (e.</p><div class="fullcomment"><div class="comment cmt"><p>Recommended convention is to call this method if the message
+isn't handled in <a href="#onReceive(message:Any):Unit" class="extmbr" name="akka.actor.UntypedActor#onReceive">#onReceive</a> (e.g. unknown message type).
+By default it fails with either a <a href="DeathPactException.html" class="extype" name="akka.actor.DeathPactException">akka.actor.DeathPactException</a> (in
+case of an unhandled <a href="Terminated.html" class="extype" name="akka.actor.Terminated">akka.actor.Terminated</a> message) or publishes an <a href="UnhandledMessage.html" class="extype" name="akka.actor.UnhandledMessage">akka.actor.UnhandledMessage</a>
+to the actor's system's <a href="../event/EventStream.html" class="extype" name="akka.event.EventStream">akka.event.EventStream</a>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> → <a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
+      <a id="wait(Long,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Long" class="extype" target="_top">Long</a></span>, <span name="arg1">arg1: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Int" class="extype" target="_top">Int</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
+      <a id="wait(Long):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Long" class="extype" target="_top">Long</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.Predef.any2ArrowAssoc#→" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="→[B](y:B):(A,B)"></a>
+      <a id="→[B](B):(UntypedActor,B)"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $u2192" class="implicit">→</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a>, <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span>)</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> to
+            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a>] performed by method any2ArrowAssoc in scala.Predef.
+            
+          </dd><dt>Definition Classes</dt><dd>ArrowAssoc</dd></dl></div>
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Shadowed Implicit Value Members</h3>
+              <ol><li name="scala.Predef.any2stringadd#self" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="self:Any"></a>
+      <a id="self:Any"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit shadowed">self</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> to
+            <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.runtime.StringAdd" class="extype" target="_top">StringAdd</a> performed by method any2stringadd in scala.Predef.
+            
+          </dd><dt class="implicit">Shadowing</dt><dd>This implicitly inherited member is shadowed by one or more members in this class.<br />To access this member you can use a <a href="http://stackoverflow.com/questions/2087250/what-is-the-purpose-of-type-ascription-in-scala" target="_blank">type ascription</a>:<br /><div class="cmt"><pre>(untypedActor: StringAdd).self</pre></div></dd><dt>Definition Classes</dt><dd>StringAdd</dd></dl></div>
+    </li><li name="scala.Predef.any2stringfmt#self" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="self:Any"></a>
+      <a id="self:Any"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit shadowed">self</span><span class="result">: <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> to
+            <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.runtime.StringFormat" class="extype" target="_top">StringFormat</a> performed by method any2stringfmt in scala.Predef.
+            
+          </dd><dt class="implicit">Shadowing</dt><dd>This implicitly inherited member is shadowed by one or more members in this class.<br />To access this member you can use a <a href="http://stackoverflow.com/questions/2087250/what-is-the-purpose-of-type-ascription-in-scala" target="_blank">type ascription</a>:<br /><div class="cmt"><pre>(untypedActor: StringFormat).self</pre></div></dd><dt>Definition Classes</dt><dd>StringFormat</dd></dl></div>
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="scala.Predef.any2ArrowAssoc#x" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="x:A"></a>
+      <a id="x:UntypedActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit shadowed deprecated" title="Deprecated: (Since version 2.10.0) Use leftOfArrow instead">x</span><span class="result">: <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> to
+            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a>] performed by method any2ArrowAssoc in scala.Predef.
+            
+          </dd><dt class="implicit">Shadowing</dt><dd>This implicitly inherited member is ambiguous. One or more implicitly inherited members have similar signatures, so calling this member may produce an ambiguous implicit conversion compiler error.<br />To access this member you can use a <a href="http://stackoverflow.com/questions/2087250/what-is-the-purpose-of-type-ascription-in-scala" target="_blank">type ascription</a>:<br /><div class="cmt"><pre>(untypedActor: ArrowAssoc[UntypedActor]).x</pre></div></dd><dt>Definition Classes</dt><dd>ArrowAssoc</dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.10.0)</i> Use <code><u>leftOfArrow<code> instead</code></u></code></p></dd></dl></div>
+    </li><li name="scala.Predef.any2Ensuring#x" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="x:A"></a>
+      <a id="x:UntypedActor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit shadowed deprecated" title="Deprecated: (Since version 2.10.0) Use resultOfEnsuring instead">x</span><span class="result">: <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a>] performed by method any2Ensuring in scala.Predef.
+            
+          </dd><dt class="implicit">Shadowing</dt><dd>This implicitly inherited member is ambiguous. One or more implicitly inherited members have similar signatures, so calling this member may produce an ambiguous implicit conversion compiler error.<br />To access this member you can use a <a href="http://stackoverflow.com/questions/2087250/what-is-the-purpose-of-type-ascription-in-scala" target="_blank">type ascription</a>:<br /><div class="cmt"><pre>(untypedActor: Ensuring[UntypedActor]).x</pre></div></dd><dt>Definition Classes</dt><dd>Ensuring</dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.10.0)</i> Use <code><u>resultOfEnsuring<code> instead</code></u></code></p></dd></dl></div>
+    </li></ol>
+            </div>
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="akka.actor.Actor">
+              <h3>Inherited from <a href="Actor.html" class="extype" name="akka.actor.Actor">Actor</a></h3>
+            </div><div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.AnyRef" class="extype" target="_top">AnyRef</a></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.Any" class="extype" target="_top">Any</a></h3>
+            </div>
+        <div class="conversion" name="scala.Predef.any2stringadd">
+              <h3>Inherited by implicit conversion any2stringadd from
+                <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> to <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.runtime.StringAdd" class="extype" target="_top">StringAdd</a>
+              </h3>
+            </div><div class="conversion" name="scala.Predef.any2stringfmt">
+              <h3>Inherited by implicit conversion any2stringfmt from
+                <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> to <a href="http://www.scala-lang.org/api/2.10.4/index.html#scala.runtime.StringFormat" class="extype" target="_top">StringFormat</a>
+              </h3>
+            </div><div class="conversion" name="scala.Predef.any2ArrowAssoc">
+              <h3>Inherited by implicit conversion any2ArrowAssoc from
+                <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> to <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a>]
+              </h3>
+            </div><div class="conversion" name="scala.Predef.any2Ensuring">
+              <h3>Inherited by implicit conversion any2Ensuring from
+                <a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a> to <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="akka.actor.UntypedActor">UntypedActor</a>]
+              </h3>
+            </div>
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../lib/template.js"></script><script defer="defer" type="text/javascript" id="modernizr-custom-js" src="../../lib/modernizr.custom.js"></script><script defer="defer" type="text/javascript" id="diagrams-js" src="../../lib/diagrams.js"></script>
+    </body>
+      </html>
